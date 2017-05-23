@@ -1,1 +1,41 @@
 /* CSS declarations go here */
+.input-group {
+  padding-top: 7px;
+}
+
+.container{
+ width: 100%;
+}
+
+#render-target{
+  border: 0px;
+  margin: 0px;
+}
+
+.body{
+  border: 0px;
+  background-color:rgb(215, 188, 162);
+}
+
+.navbar-inverse {
+    background-color: rgb(64, 20, 17);
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+  color: rgb(215, 188, 162);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgb(215, 188, 162);
+}
+
+#login-buttons a {
+
+    color: rgb(215, 188, 162);
+    text-decoration: none;
+}
+
+.login-buttons-dropdown-align-{
+    padding-top: 17px;
+}

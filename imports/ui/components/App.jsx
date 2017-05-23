@@ -29,25 +29,43 @@ export class App extends Component {
 	render() {
 
 		return(
-			<div className="container">
-				<AccountsUIWrapper />
-				<h1>PeerGrader</h1>
+				<section>
+			<nav className="navbar navbar-inverse">
+  			<div className="container-fluid">
+    			<div className="navbar-header">
+			      <a className="navbar-brand" href="/">Pet family finder</a>
+    			</div>
+					<div className="col-lg-6">
+							<div className="input-group">
+							<input type="text" className	="form-control" placeholder="Search for..."/>
+								<span className="input-group-btn">
+									<button className="btn btn-default" type="button">Go!</button>
+								</span>
+							</div>
+					</div>
+    			<ul className="nav navbar-nav navbar-right">
+      		<li>
+
+					</li>
+      		<li><a href="#">Publica tu mascota</a></li>
+					<li><AccountsUIWrapper /></li>
+				</ul>
+  			</div>
+			</nav>
+
+
+				<h1>Peet Family finder</h1>
 				<div className="row">
 					<div className="col-md-4">
-				<h2>Projects:</h2>
-				{this.renderProjects()}
+					</div>
+			<div className="col-md-4">
 			</div>
 			<div className="col-md-4">
-				<h2>Your favorites:</h2>
-				<div>{this.renderFavourites()}</div>
-			</div>
-			<div className="col-md-4">
-				<h2>Overall most voted</h2>
-				<div>{this.renderTop()}</div>
 			</div>
 		</div>
+	</section>
 
-			</div>
+
 			);
 	}
 }
