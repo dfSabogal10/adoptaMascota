@@ -26,6 +26,22 @@ export class App extends Component {
 		return <Project project= {project} > </Project>;
 	});
 	}
+
+	componentDidMount(){
+		var slideIndex = 0;
+carousel();
+		function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1}
+    x[slideIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+	}
 	render() {
 
 		return(
@@ -48,7 +64,7 @@ export class App extends Component {
 
 					</li>
       		<li><a href="#">Publica tu mascota</a></li>
-					<li><AccountsUIWrapper /></li>
+					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
 			</nav>
@@ -56,13 +72,11 @@ export class App extends Component {
 
 				<h1>Peet Family finder</h1>
 				<div className="row">
-					<div className="col-md-4">
-					</div>
-			<div className="col-md-4">
-			</div>
-			<div className="col-md-4">
-			</div>
+					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
+					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
+					
 		</div>
+
 	</section>
 
 

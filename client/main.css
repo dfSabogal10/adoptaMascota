@@ -39,3 +39,53 @@
 .login-buttons-dropdown-align-{
     padding-top: 17px;
 }
+
+#login-dropdown-list{
+  position:absolute;
+  top:350%;
+  left:-360%;
+}
+
+#login-dropdown-list a {
+  color: rgb(64, 20, 17);
+}
+#login-buttons .login-button, .accounts-dialog .login-button {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    padding: 4px 8px;
+    font-size: 80%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    text-align: center;
+    color: #fff;
+    background: #AB942F;
+    border: 1px solid #464f75;
+    border-radius: 4px;
+}
+
+ #login-buttons .login-button:hover{
+  background-color: rgb(171, 148, 87);
+}
+
+img{
+  left:5%;
+  height: 10%;
+  width:50%;
+}
+
+
+.w3-animate-top {
+    position: relative;
+    animation: animatetop 0.4s;
+}
+.w3-display-container{position:relative}
+.w3-display-bottommiddle{width:100%;position:absolute;left:50%;bottom:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
+.w3-left-align{text-align:left!important}.w3-right-align{text-align:right!important}
+.w3-badge{border-radius:50%}
+.w3-border{border:1px solid #ccc!important}
+.w3-content{max-width:980px;margin:auto}
+.w3-animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
