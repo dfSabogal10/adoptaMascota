@@ -5,6 +5,7 @@ import {Publicacion} from "../../api/Publicacion.js"
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import verPost from './verPost.jsx';
 import MyPosts from './MyPosts.jsx';
+import seeMyPost from './seeMyPost.jsx';
 import {
 		BrowserRouter as Router,
 		Route,
@@ -35,19 +36,19 @@ export class App extends Component {
 	// }
 
 	componentDidMount(){
-		var slideIndex = 0;
-carousel();
-		function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > x.length) {slideIndex = 1}
-    x[slideIndex-1].style.display = "block";
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
+		// var slideIndex = 0;
+		// carousel();
+		// function carousel() {
+    // var i;
+    // var x = document.getElementsByClassName("mySlides");
+    // for (i = 0; i < x.length; i++) {
+    //   x[i].style.display = "none";
+    // }
+    // slideIndex++;
+    // if (slideIndex > x.length) {slideIndex = 1}
+    // x[slideIndex-1].style.display = "block";
+    // setTimeout(carousel, 2000); // Change image every 2 seconds
+// }
 	}
 	render() {
 		return(
@@ -74,7 +75,6 @@ carousel();
 				</ul>
   			</div>
 			</nav>
-				<h1>Peet Family finder</h1>
 				{/* <div className="row">
 					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
@@ -83,6 +83,7 @@ carousel();
 		      <Route exact path="/" component={Busqueda}/>
 		      <Route path="/post" component={verPost}/>
 					<Route path="/myposts" component={MyPosts}/>
+					<Route path="/seeMyPost" component={seeMyPost}/>
 
 
 					</div>
