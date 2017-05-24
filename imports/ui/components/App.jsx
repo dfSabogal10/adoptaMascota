@@ -2,7 +2,8 @@ import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
 import {Projects} from "../../api/Projects.js"
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
+import AccountsUIWrapper from "./AccountsUIWrapper.jsx";
 
 import Project from "./Project.jsx";
 
@@ -64,6 +65,7 @@ carousel();
 
 					</li>
       		<li><a href="#">Publica tu mascota</a></li>
+					
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
@@ -74,7 +76,12 @@ carousel();
 				<div className="row">
 					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
-					
+
+
+
+
+
+
 		</div>
 
 	</section>
@@ -91,7 +98,7 @@ App.propTypes = {
 
 
 export default AppContainer = createContainer(()=>{
-	Meteor.subscribe('projects');
+	Meteor.subscribe("projects");
 
 	return {
 		projects: Projects.find({}).fetch(),
