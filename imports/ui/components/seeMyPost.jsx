@@ -7,6 +7,14 @@ import Post from "./Post.jsx";
 
 export default class seeMyPost extends Component {
 
+initUpload(event){
+    const file =  event.target.files[0];
+
+    console.log(event.target.files[0]);
+    if(file == null){
+      return alert('No file selected.');
+    }
+	}
 f1(){
 	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
 }
@@ -36,6 +44,8 @@ acc[i].onclick = function() {
 			<div className="row">
 				<div className="col-xs-4">
 					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<input className="btn btn-default btn-file form-control" type="file" id="file-input"  onChange={this.initUpload.bind(this)}/>
+
 				</div>
 				<div className="col-xs-8">
 					<h2>Post</h2>

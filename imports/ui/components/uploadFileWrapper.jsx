@@ -18,7 +18,7 @@ export default class uploadFileWrapper extends Component {
 
     this.view = Blaze.render(Template.uploadForm,
 
-      ReactDOM.findDOMNode(this.refs.container1));
+      ReactDOM.findDOMNode(this.refs.container));
 
   }
 
@@ -34,7 +34,7 @@ export default class uploadFileWrapper extends Component {
 
     // Just render a placeholder container that will be filled in
 
-    return <span ref="container1" />;
+    return <span ref="container" />;
 
   }
 

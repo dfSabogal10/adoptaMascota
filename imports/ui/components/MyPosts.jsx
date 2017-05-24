@@ -38,7 +38,6 @@ acc[i].onclick = function() {
 			<div className="row">
 				<div className="col-xs-12">
 				<h2> My Posts</h2>
-				<uploadFileWrapper/>
 				<MyPost/>
 				<MyPost/>
 				<MyPost/>

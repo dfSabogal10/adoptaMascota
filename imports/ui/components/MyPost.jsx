@@ -2,26 +2,23 @@ import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {Publicacion} from "../../api/Publicacion.js";
 import {Link} from 'react-router-dom';
+import {BlazeToReact} from "meteor/thereactivestack:blazetoreact";
 
 
+
+const uploadFileForm = BlazeToReact("uploadForm");
 
 
 export default class MyPost extends Component {
+
+constructor(props){
+	super(props);
+}
 eliminarPost(){
 
 }
 marcarComoAdoptado(id){
-	console.log(id);
-	var boton =window.$(this);
-	if(boton.className==="btn btn-primary")
-	{
-		boton.toggleClass("btn btn-default");
-		boton.textContent= "Mark as unadopted";
-	}
-	else{
-		boton.className= "btn btn-primary";
-		boton.textContent= "Mark as adopted";
-	}
+
 }
 
 f1(){
@@ -31,9 +28,9 @@ añadirAFavoritos(){
 	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
 }
 	render() {
-
 		return (
 			<div className="row">
+
 				<div className="col-xs-3">
 					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
 				</div>
@@ -43,7 +40,7 @@ añadirAFavoritos(){
 							<Link to="seeMyPost/"><h3>post 1</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">ddx|/mm/yyyy</p>
+							<p className="fechapost">dd|mm/yyyy</p>
 						</div>
 					</div>
 					<div className="row">
@@ -83,6 +80,7 @@ añadirAFavoritos(){
 						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
 						</div>
 					</div>
+					<uploadFileForm/>
 				</div>
 
 			</div>
