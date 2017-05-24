@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
-import {Projects} from "../imports/api/Projects";
+import {Publicacion} from "../imports/api/Publicacion.js";
 
 Meteor.startup(() => {
   // code to run on server at startup

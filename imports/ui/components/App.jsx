@@ -1,31 +1,38 @@
 import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
-import {Projects} from "../../api/Projects.js"
+import {Publicacion} from "../../api/Publicacion.js"
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import verPost from './verPost.jsx';
+import MyPosts from './MyPosts.jsx';
+import {
+		BrowserRouter as Router,
+		Route,
+		Link
+	} from "react-router-dom";
+	import Busqueda from './Busqueda.jsx';
 
-import Project from "./Project.jsx";
 
 
 export class App extends Component {
-
-	renderProjects() {
-		return this.props.projects.map( (project) => {
-			return <Project project= {project} > </Project>;
-		});
-	}
-
-	renderTop() {
-	return this.props.top.map( (project) => {
-		return <Project project= {project} > </Project>;
-	});
-	}
-
-	renderFavourites(){
-	return this.props.favourites.map( (project) => {
-		return <Project project= {project} > </Project>;
-	});
-	}
+	//
+	// renderProjects() {
+	// 	return this.props.projects.map( (project) => {
+	// 		return <Project project= {project} > </Project>;
+	// 	});
+	// }
+	//
+	// renderTop() {
+	// return this.props.top.map( (project) => {
+	// 	return <Project project= {project} > </Project>;
+	// });
+	// }
+	//
+	// renderFavourites(){
+	// return this.props.favourites.map( (project) => {
+	// 	return <Project project= {project} > </Project>;
+	// });
+	// }
 
 	componentDidMount(){
 		var slideIndex = 0;
@@ -43,15 +50,16 @@ carousel();
 }
 	}
 	render() {
-
 		return(
-				<section>
+		<section>
+			<Router>
+				<div>
 			<nav className="navbar navbar-inverse">
   			<div className="container-fluid">
     			<div className="navbar-header">
 			      <a className="navbar-brand" href="/">Pet family finder</a>
     			</div>
-					<div className="col-lg-6">
+					<div className="col-xs-4">
 							<div className="input-group">
 							<input type="text" className	="form-control" placeholder="Search for..."/>
 								<span className="input-group-btn">
@@ -60,23 +68,25 @@ carousel();
 							</div>
 					</div>
     			<ul className="nav navbar-nav navbar-right">
-      		<li>
-
-					</li>
-      		<li><a href="#">Publica tu mascota</a></li>
+      		<li><Link to="/myposts">My posts</Link></li>
+      		<li><Link to="/postMyPet">Post</Link></li>
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
 			</nav>
-
-
 				<h1>Peet Family finder</h1>
-				<div className="row">
+				{/* <div className="row">
 					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
-					
-		</div>
+				</div> */}
 
+		      <Route exact path="/" component={Busqueda}/>
+		      <Route path="/post" component={verPost}/>
+					<Route path="/myposts" component={MyPosts}/>
+
+
+					</div>
+		  </Router>
 	</section>
 
 
@@ -85,17 +95,15 @@ carousel();
 }
 
 
-App.propTypes = {
-	projects : PropTypes.array.isRequired
-}
+// App.propTypes = {
+// 	projects : PropTypes.array.isRequired
+// }
 
 
 export default AppContainer = createContainer(()=>{
-	Meteor.subscribe('projects');
+	Meteor.subscribe('publicacion');
 
 	return {
-		projects: Projects.find({}).fetch(),
-		top: Projects.find({}, {sort: {votes: -1}, limit:10}).fetch(),
-		favourites: Projects.find({ FavouriteUsers: Meteor.userId() }),
+		projects: Publicacion.find({}).fetch(),
 	};
 }, App);
