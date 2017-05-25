@@ -21,6 +21,16 @@ export default class MyPosts extends Component {
 				console.log(res);
 			}
 			});
+
+			var otro = Meteor.call("Mascota.findbydate",1,10,(err, res) =>{
+			if (err) { console.log(err); }
+			else {
+			console.log("MISPOST:",res);
+			}
+			});
+
+
+
 	}
 
 

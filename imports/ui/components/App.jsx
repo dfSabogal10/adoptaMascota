@@ -7,6 +7,7 @@ import verPost from './verPost.jsx';
 import MyPosts from './MyPosts.jsx';
 import seeMyPost from './seeMyPost.jsx';
 import Formulario from './Formulario.jsx';
+import FileUploadComponent from './Prueba.jsx';
 
 import {
 		BrowserRouter as Router,
@@ -80,6 +81,8 @@ export class App extends Component {
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
       		<li><Link to="/form">Post</Link></li>
+					<li><Link to="/prueba">Prueba</Link></li>
+
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
@@ -94,6 +97,7 @@ export class App extends Component {
 					<Route path="/myposts" component={MyPosts}/>
 					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
 					<Route path="/form" component={Formulario}/>
+					<Route path="/prueba" component={FileUploadComponent}/>
 
 
 

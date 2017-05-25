@@ -35,11 +35,7 @@ Meteor.methods({
     throw new Meteor.Error('not-authorized');
   }
 var user=Meteor.userId();
-
 var mascota = Mascota.find({"nuevaMascota.userId":user}).fetch();
-
-console.log(mascota);
-
 return mascota;
 },
 'Mascota.setAdopted'(id){
@@ -51,12 +47,43 @@ return mascota;
 Mascota.update({ "_id":id},{$set: { "adoptado":true}});
 
 },
+'Mascota.setDesAdopted'(id){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+
+Mascota.update({ "_id":id},{$set: { "adoptado":true}});
+
+},
+'Mascota.deletePost'(id){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+
+Mascota.delete({ "_id":id});
+
+},
 'Mascota.findbyid'(id){
   if (! Meteor.userId()) {
     window.alert('You must login to vote');
     throw new Meteor.Error('not-authorized');
   }
   var mascota = Mascota.find({"_id":id}).fetch();
+  return mascota;
 },
+
+
+'Mascota.findbydate'(page,limit){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+  page =page*10
+  var mascota = Mascota.find({}, {sort: {fecha: -1}}, {skip:page} ,{limit:10} ).fetch();
+  return mascota;
+},
+
 
 });
