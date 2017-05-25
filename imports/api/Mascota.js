@@ -21,7 +21,8 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		}
    nuevaMascota.userId = Meteor.userId();
-   nuevaMascota.adoptado = true;
+   nuevaMascota.adoptado = false;
+   nuevaMascota.fecha =new Date();
 
     console.log(nuevaMascota);
 
@@ -47,7 +48,7 @@ return mascota;
     throw new Meteor.Error('not-authorized');
   }
 
-Mascota.update({ "_id":id},{$set: { "adoptado":false}});
+Mascota.update({ "_id":id},{$set: { "adoptado":true}});
 
 },
 'Mascota.findbyid'(id){

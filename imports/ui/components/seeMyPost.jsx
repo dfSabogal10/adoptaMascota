@@ -14,12 +14,6 @@ initUpload(event){
     if(file == null){
       return alert('No file selected.');
     }
-	}
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
-}
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
 }
 componentDidMount(){
 		var acc = document.getElementsByClassName("accordion");

@@ -7,11 +7,19 @@ import Post from "./Post.jsx";
 
 export default class Busqueda extends Component {
 
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
+constructor(props){
+	super(props);
+	this.state={post:{}};
 }
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
+componentWillMount(){
+	var response = Meteor.call("Mascota.findbyid",this.props.match.params.idPost,(err, res) =>{
+
+	if (err) { console.log(err); }
+	else {
+		this.setState({post:res});
+		console.log("entra",res);
+	}
+	});
 }
 componentDidMount(){
 		var acc = document.getElementsByClassName("accordion");
@@ -30,7 +38,6 @@ acc[i].onclick = function() {
 }
 }
 	render() {
-
 		return (
 
 			<div className="row">

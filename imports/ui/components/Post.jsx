@@ -7,14 +7,8 @@ import {Link} from 'react-router-dom';
 
 export default class Post extends Component {
 
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
-}
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
-}
-	render() {
 
+	render() {
 		return (
 			<div className="row">
 				<div className="col-xs-3">
@@ -23,40 +17,40 @@ añadirAFavoritos(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to="post/"><h3>{this.props.post.nombre}</h3></Link>
+							<Link to={"post/"+this.props.post._id}><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">{this.props.post.fecha.getDate()+"/"+this.props.post.fecha.getMonth()+"/"+this.props.post.fecha.getFullYear()}</p>
+							<p className="fechapost">{this.props.post.nuevaMascota.fecha.getDate()+"/"+this.props.post.nuevaMascota.fecha.getMonth()+"/"+this.props.post.nuevaMascota.fecha.getFullYear()}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Descripcion: {this.props.post.descripcion} </p>
+						<p>Description: {this.props.post.nuevaMascota.descripcion} </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>nombre: {this.props.post.nombreMascota}</p>
+						<p>name: {this.props.post.nuevaMascota.nombreMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>raza: {this.props.post.razaMascota}</p>
+						<p>breed: {this.props.post.nuevaMascota.razaMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>edad: {this.props.post.edadMascota}</p>
+						<p>age: {this.props.post.nuevaMascota.edadMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>ciudad: {this.props.post.ciudad}</p>
+						<p>city: {this.props.post.nuevaMascota.ciudad}</p>
 						</div>
 					</div>
 				</div>

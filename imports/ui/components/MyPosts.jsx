@@ -7,25 +7,23 @@ import { Template } from 'meteor/templating';
 
 
 export default class MyPosts extends Component {
+	constructor(props){
+		super(props);
+		this.state={posts:[]};
+	}
 
 	componentWillMount () {
 			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
 
 			if (err) { console.log(err); }
 			else {
-			console.log("MISPOST:",res);
+				this.setState({posts:res});
+				console.log(res);
 			}
 			});
 	}
 
 
-
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
-}
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
-}
 componentDidMount(){
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -43,14 +41,13 @@ acc[i].onclick = function() {
 }
 }
 	render() {
-
 		return (
 
 			<div className="row">
 				<div className="col-xs-12">
 				<h2> My Posts</h2>
-				{this.props&&this.props.posts&&this.props.posts.map(post => {
-						return <MyPost post={post} key={post.idPost}/>})}
+				{this.state&&this.state.posts&&this.state.posts.map(post => {
+						return <MyPost post={post} key={post._id}/>})}
 				</div>
 
 			</div>

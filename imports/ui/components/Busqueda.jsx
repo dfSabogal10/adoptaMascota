@@ -7,12 +7,7 @@ import Post from "./Post.jsx";
 
 export default class Busqueda extends Component {
 
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
-}
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
-}
+
 componentDidMount(){
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -30,9 +25,8 @@ acc[i].onclick = function() {
 }
 }
 	render() {
-		console.log(this.props);
-		return (
 
+		return (
 			<div className="row">
 				<div className="col-xs-3">
 					<h2>Filters</h2>
@@ -87,7 +81,7 @@ acc[i].onclick = function() {
 				<div className="col-xs-9">
 				<h2>Posts</h2>
 				{this.props&&this.props.posts&&this.props.posts.map(post => {
-						return <Post post={post} key={post.idPost}/>})}
+						return <Post post={post} key={post._id}/>})}
 				</div>
 
 			</div>
