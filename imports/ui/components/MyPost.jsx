@@ -40,7 +40,7 @@ añadirAFavoritos(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to="seeMyPost/"><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
+							<Link to={"seeMyPost/"+this.props.post._id}><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
 						</div>
 						<div className="col-xs-2">
 							<p className="fechapost">{this.props.post.nuevaMascota.fecha.getDate()+"/"+this.props.post.nuevaMascota.fecha.getMonth()+"/"+this.props.post.nuevaMascota.fecha.getFullYear()}</p>
