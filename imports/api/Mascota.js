@@ -15,11 +15,12 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	"Mascota.addNewAdopt"(nuevaMascota){
-		if (! Meteor.userId()) {
+		if (! this.userId) {
       window.alert("You must login to add a new pet");
 			throw new Meteor.Error("not-authorized");
 		}
-   nuevaMascota.userId = Meteor.userId();
+
+   nuevaMascota.userId = this.userId;
    nuevaMascota.adoptado = false;
    nuevaMascota.fecha =new Date();
 

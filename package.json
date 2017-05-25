@@ -63,9 +63,10 @@
       "plugin:meteor/recommended"
     ],
     "babel": {
-   "plugins": ["transform-class-properties"]
-
- },
+      "plugins": [
+        "transform-class-properties"
+      ]
+    },
     "settings": {
       "import/resolver": "meteor"
     },
