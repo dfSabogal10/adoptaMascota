@@ -50,5 +50,12 @@ return mascota;
 Mascota.update({ "_id":id},{$set: { "adoptado":false}});
 
 },
+'Mascota.findbyid'(id){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+  var mascota = Mascota.find({"_id":id}).fetch();
+},
 
 });
