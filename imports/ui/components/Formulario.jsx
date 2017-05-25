@@ -67,23 +67,23 @@ export default class Formulario extends Component {
 	console.log(this.state);
 
   let formData = {
-   formName: this.refs.name.value,
-   formDescription: this.refs.description.value,
-   formTipoMascota: this.refs.tipoMascota.value,
-   formEdadMascota: this.refs.edadMascota.value,
-	 formNombreMascota: this.refs.nombreMasctoa.value,
-	 formVacunas: this.refs.vacunas.value,
-	 formTelefonoContacto: this.refs.telefono.value,
-	 formEmailContacto: this.refs.email.value,
-	 formOtrosDatosContacto: this.refs.datoscontacto.value,
-	 formBarrio: this.refs.barrio.value,
-	 formCiudad: this.refs.barrio.value,
-	 formFecha: this.refs.fecha.value
+   name: this.refs.name.value,
+   description: this.refs.description.value,
+   tipoMascota: this.refs.tipoMascota.value,
+   edadMascota: this.refs.edadMascota.value,
+	 nombreMasctoa: this.refs.nombreMasctoa.value,
+	 vacunas: this.refs.vacunas.value,
+	 telefonoContacto: this.refs.telefono.value,
+	 emailContacto: this.refs.email.value,
+	 otrosDatosContacto: this.refs.datoscontacto.value,
+	 barrio: this.refs.barrio.value,
+	 ciudad: this.refs.barrio.value,
+	 fecha: this.refs.fecha.value
 
   }
 	console.log(formData);
 
-	if (formData.formName.length < 1 || formData.formEmailContacto.length < 1 || formData.formTipoMascota.length < 1 ) {
+	if (formData.name.length < 1 || formData.emailContacto.length < 1 || formData.tipoMascota.length < 1 ) {
    return false;
   }
 	var user = Meteor.call("Mascota.addNewAdopt",formData);
