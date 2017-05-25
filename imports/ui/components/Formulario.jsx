@@ -34,6 +34,8 @@ export default class Formulario extends Component {
 	 otrosDatosContacto: "",
 	 ciudad: "",
 	 barrio: "",
+	 raza: "",
+
 	 fecha: ""
 
   }
@@ -57,7 +59,8 @@ export default class Formulario extends Component {
 	 	 otrosDatosContacto: event.target.otrosDatosContacto,
 	 	 barrio: event.target.barrio,
 		 ciudad: event.target.ciudad,
-	 	 fecha: event.target.fecha
+	 	 fecha: event.target.fecha,
+		 raza: event.target.raza
 
 		},);
  }
@@ -78,7 +81,8 @@ export default class Formulario extends Component {
 	 otrosDatosContacto: this.refs.datoscontacto.value,
 	 barrio: this.refs.barrio.value,
 	 ciudad: this.refs.barrio.value,
-	 fecha: this.refs.fecha.value
+	 fecha: this.refs.fecha.value,
+	 raza: this.refs.raza.value
 
   }
 	console.log(formData);
@@ -104,6 +108,8 @@ export default class Formulario extends Component {
 		ciudad: "",
 		barrio: "",
 		imagenes: "",
+		raza: "",
+
 		fecha: ""
 	  });
  };
@@ -145,6 +151,11 @@ export default class Formulario extends Component {
 		<fieldset className="form-group">
 		<ReactFormLabel htmlFor="formNombreMascota" title="Nombre de la mascota:" />
 		<input id="formNombreMascota" className="form-input" ref="nombreMasctoa" name="nombreMasctoa" type="text"  onChange={this.handleChange} value={this.state.nombreMascota} />
+	 </fieldset>
+
+	 <fieldset className="form-group">
+	 <ReactFormLabel htmlFor="raza" title="Vacunas:" />
+	 <input id="raza" className="form-input" ref="raza" name="raza" type="text"  onChange={this.handleChange} value={this.state.raza} />
 	 </fieldset>
 
 	 <fieldset className="form-group">
