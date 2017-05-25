@@ -7,6 +7,21 @@ import Post from "./Post.jsx";
 
 export default class seeMyPost extends Component {
 
+  constructor(props){
+  	super(props);
+  	this.state={post:{}};
+  }
+  componentWillMount(){
+  	var response = Meteor.call("Mascota.findbyid",this.props.match.params.idPost,(err, res) =>{
+
+  	if (err) { console.log(err); }
+  	else {
+  		this.setState({post:res[0].nuevaMascota});
+  		console.log("res",res[0]);
+
+  	}
+  	});
+  }
 initUpload(event){
     const file =  event.target.files[0];
 
@@ -20,19 +35,21 @@ componentDidMount(){
 		var i;
 
 		for (i = 0; i < acc.length; i++) {
-acc[i].onclick = function() {
-	this.classList.toggle("active");
-	var panel = this.nextElementSibling;
-	if (panel.style.maxHeight){
-		panel.style.maxHeight = null;
-	} else {
-		panel.style.maxHeight = panel.scrollHeight + "px";
-	}
-}
-}
+      acc[i].onclick = function() {
+	       this.classList.toggle("active");
+	       var panel = this.nextElementSibling;
+	       if (panel.style.maxHeight){
+		         panel.style.maxHeight = null;
+	       }
+         else {
+		         panel.style.maxHeight = panel.scrollHeight + "px";
+	       }
+       }
+     }
 }
 	render() {
-
+    if(this.state.post.fecha){
+    console.log("arriba es asincronico",console.log(this.state));
 		return (
 
 			<div className="row">
@@ -41,61 +58,55 @@ acc[i].onclick = function() {
 					<input className="btn btn-default btn-file form-control" type="file" id="file-input"  onChange={this.initUpload.bind(this)}/>
 
 				</div>
-				<div className="col-xs-8">
-					<h2>Post</h2>
+        <div className="col-xs-8">
+					<h2>{this.state.post.nombre}</h2>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Fecha: dd/mm/aaaa</p>
+						<p>Date: {this.state.post.fecha.getDate()+"/"+this.state.post.fecha.getMonth()+"/"+this.state.post.fecha.getFullYear()}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Nombre: nombre</p>
+						<p>Name: {this.state.post.nombreMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
+						<p>Descripcion: {this.state.post.descripcion} </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Tipo: perro/gato</p>
+						<p>Tipo: {this.state.post.tipoMascota}</p>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-xs-1"></div>
+						<div className="col-xs-11">
+						<p>Raza: {this.state.post.raza}</p>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-xs-1"></div>
+						<div className="col-xs-11">
+						<p>Edad: {this.state.post.edadMascota}</p>
 						</div>
 					</div>
 
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Raza: raza</p>
+						<p>ciudad: {this.state.post.ciudad}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Edad: edad</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>Pais: pais</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>ciudad: ciudad</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>Barrio: barrio</p>
+						<p>Barrio: {this.state.post.barrio}</p>
 						</div>
 					</div>
 					<br/>
@@ -103,19 +114,19 @@ acc[i].onclick = function() {
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Telefono: +123456789098</p>
+						<p>Telefono: {this.state.post.telefonoContacto}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Email: email@email.com</p>
+						<p>Email: {this.state.post.emailContacto}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Otros datos de contacto: otrocontacto</p>
+						<p>Otros datos de contacto: {this.state.post.otrosDatosContacto}</p>
 						</div>
 					</div>
 				</div>
@@ -124,6 +135,10 @@ acc[i].onclick = function() {
 			</div>
 		);
 	}
+  else{
+    return(<div><h5>Cargando...</h5></div>);
+  }
+}
 }
 
 

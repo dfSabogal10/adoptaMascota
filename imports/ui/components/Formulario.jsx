@@ -188,7 +188,7 @@ export default class Formulario extends Component {
 	 <fieldset className="form-group">
      <div className="row">
        <div className="col-xs-2 formlabel">
-	        <ReactFormLabel htmlFor="raza" title="Vacunas:" />
+	        <ReactFormLabel htmlFor="raza" title="Raza:" />
        </div>
        <div className="col-xs-10 forminput">
          <input id="raza" className="form-control" ref="raza" name="raza" type="text"  onChange={this.handleChange} value={this.state.raza} />

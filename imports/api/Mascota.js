@@ -7,9 +7,7 @@ if (Meteor.isServer) {
   // This code only runs on the server
 
   Meteor.publish('mascota', function projectsPublication() {
-
     return Mascota.find();
-
   });
 }
 
@@ -45,6 +43,7 @@ return mascota;
   }
 
 Mascota.update({ "_id":id},{$set: { "adoptado":true}});
+console.log("lohizo")
 
 },
 'Mascota.setDesAdopted'(id){
@@ -53,7 +52,7 @@ Mascota.update({ "_id":id},{$set: { "adoptado":true}});
     throw new Meteor.Error('not-authorized');
   }
 
-Mascota.update({ "_id":id},{$set: { "adoptado":true}});
+Mascota.update({ "_id":id},{$set: { "adoptado":false}});
 
 },
 'Mascota.deletePost'(id){

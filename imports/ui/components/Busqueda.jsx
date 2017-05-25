@@ -73,9 +73,9 @@ acc[i].onclick = function() {
 									<a href="#">Canada</a><br/>
 									<a href="#">Italy</a><br/>
 								</div>
-							<div className="botonFiltros">
+							{/* <div className="botonFiltros">
 							<button className="btn btn-primary btn-lg">Search</button>
-							</div>
+							</div> */}
 
 				</div>
 				<div className="col-xs-9">

@@ -74,13 +74,13 @@ export class App extends Component {
 							<div className="input-group">
 							<input type="text" className	="form-control" placeholder="Search for..."/>
 								<span className="input-group-btn">
-									<button className="btn btn-default" type="button">Go!</button>
+									<button className="btn btn-primary" type="button">Go!</button>
 								</span>
 							</div>
 					</div>
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
-      		<li><Link to="/form">Post</Link></li>
+      		<li><Link className="botonPost"to="/form"><button className="btn btn-primary">Post</button></Link></li>
 					<li><Link to="/prueba">Prueba</Link></li>
 
 					<li><AccountsUIWrapper/></li>
