@@ -17,6 +17,12 @@ constructor(props){
 eliminarPost(){
 
 }
+<<<<<<< HEAD
+=======
+marcarComoAdoptado(id){
+
+Meteor.call('Mascota.setAdopted',"NOMBRE DE LA MASCOTa");
+>>>>>>> d2869de12f9a78a8bc492f6cc8db747755114af8
 
 marcarComoAdoptado(){
 	console.log(this.props.post.nuevaMascota.adoptado);
@@ -32,6 +38,7 @@ desmarcarComoAdoptado(){
 		console.log(this.props);
 		if(!this.props.post.nuevaMascota.adoptado)
 		{
+
 		return (
 			<div className="row">
 
@@ -41,40 +48,40 @@ desmarcarComoAdoptado(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to={"seeMyPost/"+this.props.post._id}><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
+							<Link to="seeMyPost/"><h3>post 1</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">{this.props.post.nuevaMascota.fecha.getDate()+"/"+this.props.post.nuevaMascota.fecha.getMonth()+"/"+this.props.post.nuevaMascota.fecha.getFullYear()}</p>
+							<p className="fechapost">dd|mm/yyyy</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Description:{this.props.post.nuevaMascota.descripcion} </p>
+						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>name: {this.props.post.nuevaMascota.nombreMascota}</p>
+						<p>nombre: nombre</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>breed: {this.props.post.nuevaMascota.raza}</p>
+						<p>raza: raza</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>age: {this.props.post.nuevaMascota.edadMascota}</p>
+						<p>edad: raza</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>city: {this.props.post.nuevaMascota.ciudad}</p>
+						<p>ciudad: ciudad</p>
 						</div>
 					</div>
 					<div className="row">
@@ -84,6 +91,7 @@ desmarcarComoAdoptado(){
 						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
 						</div>
 					</div>
+					<uploadFileForm/>
 				</div>
 
 			</div>

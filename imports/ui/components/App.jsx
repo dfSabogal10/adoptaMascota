@@ -2,19 +2,19 @@ import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
 import {Mascota} from "../../api/Mascota.js"
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
-import verPost from './verPost.jsx';
-import MyPosts from './MyPosts.jsx';
-import seeMyPost from './seeMyPost.jsx';
-import Formulario from './Formulario.jsx';
-import FileUploadComponent from './Prueba.jsx';
+import AccountsUIWrapper from "./AccountsUIWrapper.jsx";
+import verPost from "./verPost.jsx";
+import MyPosts from "./MyPosts.jsx";
+import seeMyPost from "./seeMyPost.jsx";
+import Formulario from "./Formulario.jsx";
+import FileUploadComponent from "./Prueba.jsx";
 
 import {
 		BrowserRouter as Router,
 		Route,
 		Link
 	} from "react-router-dom";
-	import Busqueda from './Busqueda.jsx';
+	import Busqueda from "./Busqueda.jsx";
 
 
 
@@ -56,7 +56,7 @@ export class App extends Component {
 		// 		imagenes: ["imagen1.com","imagen2.com"],
 		// 	}
 		//
-		// 	console.log(Meteor.call('Mascota.addNewAdopt',testData[i]));
+		// 	console.log(Meteor.call("Mascota.addNewAdopt",testData[i]));
 		// }
 	}
 	render() {
@@ -117,7 +117,7 @@ App.propTypes = {
 
 
 export default AppContainer = createContainer(()=>{
-	Meteor.subscribe('mascota');
+	Meteor.subscribe("mascota");
 
 	return {
 		posts: Mascota.find({}).fetch(),

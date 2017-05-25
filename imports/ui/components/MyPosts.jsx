@@ -13,6 +13,21 @@ export default class MyPosts extends Component {
 	}
 
 	componentWillMount () {
+	//		var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
+
+		//	if (err) { console.log(err); }
+			//else {
+			//console.log("MISPOST:",res);
+			//}
+		//	});
+
+			//var otro = Meteor.call("Mascota.findbydate",1,10,(err, res) =>{
+			//if (err) { console.log(err); }
+			//else {
+			//console.log("MISPOST:",res);
+			//}
+			//});
+
 			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
 
 			if (err) { console.log(err); }
@@ -22,12 +37,7 @@ export default class MyPosts extends Component {
 			}
 			});
 
-			var otro = Meteor.call("Mascota.findbydate",1,10,(err, res) =>{
-			if (err) { console.log(err); }
-			else {
-			console.log("MISPOST:",res);
-			}
-			});
+
 
 
 
