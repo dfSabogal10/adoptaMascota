@@ -3,7 +3,7 @@ import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
 const reactFormContainer = document.querySelector(".react-form-container");
 
-
+var jesus = new FileReader();
 class ReactFormLabel extends React.Component {
  constructor(props) {
   super(props);
@@ -35,7 +35,7 @@ export default class Formulario extends Component {
 	 ciudad: "",
 	 barrio: "",
 	 raza: "",
-
+imagen : "",
 	 fecha: ""
 
   }
@@ -44,7 +44,23 @@ export default class Formulario extends Component {
 
  }
 
+ showImage() {
+   var image = document.querySelector('img');
+   var file = document.querySelector('input[type=file]').files[0];
+   jesus.onloadend = function () {
+     image.src = jesus.result;
+     image.hidden=false;
+   }
+   if (file) {
+    jesus.readAsDataURL(file);
+   } else {
+     image.src = "";
+   }
+ }
+
+
  handleChange  (event) {
+
 
 	 this.setState({
 
@@ -67,8 +83,6 @@ export default class Formulario extends Component {
 
  handleSubmit (e, message) {
   e.preventDefault();
-	console.log(this.state);
-
   let formData = {
    name: this.refs.name.value,
    description: this.refs.description.value,
@@ -82,8 +96,8 @@ export default class Formulario extends Component {
 	 barrio: this.refs.barrio.value,
 	 ciudad: this.refs.barrio.value,
 	 fecha: this.refs.fecha.value,
-	 raza: this.refs.raza.value
-
+	 raza: this.refs.raza.value,
+   imagen:jesus.result
   }
 	console.log(formData);
 
@@ -94,6 +108,10 @@ export default class Formulario extends Component {
 	 	   console.log("siretorno:",user);
 
   console.log("Enviado")
+  jesus = new FileReader();
+  var image = document.querySelector('img');
+  image.src = "";
+  image.hidden=true;
 
   this.setState({
 		nombre: "",
@@ -109,7 +127,7 @@ export default class Formulario extends Component {
 		barrio: "",
 		imagenes: "",
 		raza: "",
-
+    imagen : "",
 		fecha: ""
 	  });
  };
@@ -274,6 +292,35 @@ export default class Formulario extends Component {
       </div>
     </div>
   </fieldset>
+
+  <fieldset className="form-group">
+    <div className="row">
+      <div className="col-xs-2 formlabel">
+        <ReactFormLabel htmlFor="formImages" title="imagen" />
+      </div>
+      <div className="col-xs-10 forminput">
+        <label className="btn btn-default btn-file" style={{ marginLeft: 10 }}>
+        Upload Photo <input type="file" ref="image" name="image" onChange={this.showImage.bind(this)} required />
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset className="form-group">
+    <div className="row">
+      <div className="col-xs-2 formlabel">
+        <ReactFormLabel htmlFor="formImages" title="Preview" />
+      </div>
+      <div className="col-xs-10 forminput">
+        <img src="" width="400" height="400" style={{ margin: 40 }} alt="Pet Preview"  hidden/>
+      </div>
+    </div>
+  </fieldset>
+
+
+
+
+
     <div className="form-group right">
      <input id="formButton" className="btn btn-primary" type="submit" placeholder="Send message" />
     </div>
