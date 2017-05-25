@@ -16,7 +16,7 @@ if (Meteor.isServer) {
 Meteor.methods({
 	"Mascota.addNewAdopt"(nuevaMascota){
 		if (! Meteor.userId()) {
-      window.alert("You must login to vote");
+      window.alert("You must login to add a new pet");
 			throw new Meteor.Error("not-authorized");
 		}
    nuevaMascota.userId = Meteor.userId();
@@ -30,7 +30,7 @@ Meteor.methods({
 },
 "Mascota.viewMyPosts"(){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 var user=Meteor.userId();
@@ -39,17 +39,16 @@ return mascota;
 },
 "Mascota.setAdopted"(id){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 
-Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":true}});
-console.log("lohizo");
+  Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":false}});
 
 },
 "Mascota.setDesAdopted"(id){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 
@@ -58,7 +57,7 @@ Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":false}});
 },
 "Mascota.deletePost"(id){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 
@@ -67,7 +66,7 @@ Mascota.remove({ "_id":id});
 },
 "Mascota.findbyid"(id){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({"_id":id}).fetch();
@@ -77,7 +76,7 @@ Mascota.remove({ "_id":id});
 
 "Mascota.findbydate"(salto,limit){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({}, {sort: { "nuevaMascota.fecha": -1 } ,skip:salto,limit:limit}).fetch();
@@ -86,7 +85,7 @@ Mascota.remove({ "_id":id});
 },
 "Mascota.viewallnotAdopted"(salto,limit){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 var user=Meteor.userId();
@@ -95,7 +94,7 @@ return mascota;
 },
 "Mascota.findbytype"(salto,limit,type){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({"nuevaMascota.tipoMascota":type}, {sort: { "nuevaMascota.tipoMascota": -1 } ,skip:salto,limit:limit}).fetch();
@@ -104,7 +103,7 @@ return mascota;
 },
 "Mascota.findbyraze"(salto,limit,raza){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({"nuevaMascota.raza":raza}, {sort: { "nuevaMascota.raza": -1 } ,skip:salto,limit:limit}).fetch();
@@ -113,7 +112,7 @@ return mascota;
 },
 "Mascota.findbycity"(salto,limit,ciudad){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({"nuevaMascota.ciudad":ciudad}, {sort: { "nuevaMascota.ciudad": -1 } ,skip:salto,limit:limit}).fetch();
@@ -122,7 +121,7 @@ return mascota;
 },
 "Mascota.findbyage"(salto,limit,edad){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 console.log(mayor);
@@ -133,7 +132,7 @@ console.log(mayor);
 },
 "Mascota.findbpublicationName"(salto,limit,name){
   if (! Meteor.userId()) {
-    window.alert("You must login to vote");
+    window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
 console.log(mayor);
