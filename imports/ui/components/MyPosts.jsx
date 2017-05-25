@@ -28,15 +28,20 @@ export default class MyPosts extends Component {
 			//}
 			//});
 
-			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
-
+		//	var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
+			//if (err) { console.log(err); }
+			//else {
+				//this.setState({posts:res});
+				//console.log(res);
+			//}
+			//});
+			var response = Meteor.call("Mascota.setDesAdopted","8qByTM55iGRnCMETs",(err, res) =>{
 			if (err) { console.log(err); }
 			else {
 				this.setState({posts:res});
 				console.log(res);
 			}
 			});
-
 
 
 

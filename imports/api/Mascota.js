@@ -44,7 +44,7 @@ return mascota;
     throw new Meteor.Error("not-authorized");
   }
 
-Mascota.update({ "_id":id},{$set: { "adoptado":true}});
+Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":true}});
 
 },
 "Mascota.setDesAdopted"(id){
@@ -53,7 +53,7 @@ Mascota.update({ "_id":id},{$set: { "adoptado":true}});
     throw new Meteor.Error("not-authorized");
   }
 
-Mascota.update({ "_id":id},{$set: { "adoptado":true}});
+Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":false}});
 
 },
 "Mascota.deletePost"(id){
