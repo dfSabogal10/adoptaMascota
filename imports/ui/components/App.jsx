@@ -23,6 +23,8 @@ export class App extends Component {
 		super(props);
 		this.state={busqueda:false,
 								post:[]}
+
+								
 	}
 	handleSubmit (e, message) {
 		e.preventDefault();
@@ -38,6 +40,8 @@ export class App extends Component {
   	});
 
  	}
+
+
 	componentDidMount(){
 		// var slideIndex = 0;
 		// carousel();
