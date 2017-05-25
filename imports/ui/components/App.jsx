@@ -96,8 +96,7 @@ export class App extends Component {
 					</div>
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
-      		<li><Link to="/postMyPet">Post</Link></li>
-					<li><Link to="/form">Add Pet</Link></li>
+      		<li><Link to="/form">Post</Link></li>
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
