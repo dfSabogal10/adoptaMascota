@@ -30,7 +30,7 @@ acc[i].onclick = function() {
 }
 }
 	render() {
-
+		console.log(this.props);
 		return (
 
 			<div className="row">
@@ -86,12 +86,8 @@ acc[i].onclick = function() {
 				</div>
 				<div className="col-xs-9">
 				<h2>Posts</h2>
-				<Post/>
-				<Post/>
-				<Post/>
-				<Post/>
-				<Post/>
-				<Post/>
+				{this.props&&this.props.posts&&this.props.posts.map(post => {
+						return <Post post={post} key={post.idPost}/>})}
 				</div>
 
 			</div>

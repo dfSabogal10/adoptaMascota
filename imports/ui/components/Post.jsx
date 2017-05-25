@@ -23,40 +23,40 @@ añadirAFavoritos(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to="post/"><h3>post 1</h3></Link>
+							<Link to="post/"><h3>{this.props.post.nombre}</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">dd/mm/yyyy</p>
+							<p className="fechapost">{this.props.post.fecha.getDate()+"/"+this.props.post.fecha.getMonth()+"/"+this.props.post.fecha.getFullYear()}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
+						<p>Descripcion: {this.props.post.descripcion} </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>nombre: nombre</p>
+						<p>nombre: {this.props.post.nombreMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>raza: raza</p>
+						<p>raza: {this.props.post.razaMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>edad: raza</p>
+						<p>edad: {this.props.post.edadMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>ciudad: ciudad</p>
+						<p>ciudad: {this.props.post.ciudad}</p>
 						</div>
 					</div>
 				</div>

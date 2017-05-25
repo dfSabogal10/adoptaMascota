@@ -3,7 +3,6 @@ import {Meteor} from "meteor/meteor";
 import {Publicacion} from "../../api/Publicacion.js";
 import MyPost from "./MyPost.jsx";
 import { Template } from 'meteor/templating';
-import uploadFileWrapper from './uploadFileWrapper.jsx'
 
 
 
@@ -38,12 +37,8 @@ acc[i].onclick = function() {
 			<div className="row">
 				<div className="col-xs-12">
 				<h2> My Posts</h2>
-				<MyPost/>
-				<MyPost/>
-				<MyPost/>
-				<MyPost/>
-				<MyPost/>
-				<MyPost/>
+				{this.props&&this.props.posts&&this.props.posts.map(post => {
+						return <MyPost post={post} key={post.idPost}/>})}
 				</div>
 
 			</div>

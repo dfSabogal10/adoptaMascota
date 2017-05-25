@@ -51,6 +51,30 @@ export class App extends Component {
 // }
 	}
 	render() {
+		var testData=[];
+		for (var i = 0; i < 10; i++) {
+			testData[i]={
+				idPost:i,
+				nombre: "Doy mascota en adopcion "+i,
+				descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum.",
+				tipoMascota: "Perro",
+				edadMascota: i,
+				nombreMascota: "Mascota "+i,
+				razaMascota: "raza "+i,
+				vacunas: "ninguna",
+				telefonoContacto: 573101234567+i,
+				emailContacto: "email"+i+"@email.com",
+				otrosDatosContacto: "facebook: usuario"+i,
+				idusuario: i,
+				nombreUsuario: "usuario"+i,
+				pais: "pais "+i,
+				ciudad: "ciudad "+i,
+				barrio:"barrio " +i,
+				imagenes: ["imagen1.com","imagen2.com"],
+				fecha: new Date(),
+				adoptada: false
+			}
+		}
 		return(
 		<section>
 			<Router>
@@ -80,10 +104,10 @@ export class App extends Component {
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
 				</div> */}
 
-		      <Route exact path="/" component={Busqueda}/>
-		      <Route path="/post" component={verPost}/>
-					<Route path="/myposts" component={MyPosts}/>
-					<Route path="/seeMyPost" component={seeMyPost}/>
+		      <Route exact path="/" render={() => (<Busqueda posts={testData}/>)} />
+		      <Route path="/post/:idPost" component={verPost}/>
+					<Route path="/myposts" render={() => (<MyPosts posts={testData}/>)}/>
+					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
 
 
 					</div>

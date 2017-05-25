@@ -6,7 +6,6 @@ import {BlazeToReact} from "meteor/thereactivestack:blazetoreact";
 
 
 
-const uploadFileForm = BlazeToReact("uploadForm");
 
 
 export default class MyPost extends Component {
