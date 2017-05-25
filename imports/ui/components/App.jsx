@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
-import {Publicacion} from "../../api/Publicacion.js"
+import {Mascota} from "../../api/Mascota.js"
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import verPost from './verPost.jsx';
 import MyPosts from './MyPosts.jsx';
@@ -19,24 +19,9 @@ import {
 
 
 export class App extends Component {
-	//
-	// renderProjects() {
-	// 	return this.props.projects.map( (project) => {
-	// 		return <Project project= {project} > </Project>;
-	// 	});
-	// }
-	//
-	// renderTop() {
-	// return this.props.top.map( (project) => {
-	// 	return <Project project= {project} > </Project>;
-	// });
-	// }
-	//
-	// renderFavourites(){
-	// return this.props.favourites.map( (project) => {
-	// 	return <Project project= {project} > </Project>;
-	// });
-	// }
+	constructor(props){
+		super(props);
+	}
 
 	componentDidMount(){
 		// var slideIndex = 0;
@@ -51,33 +36,31 @@ export class App extends Component {
     // if (slideIndex > x.length) {slideIndex = 1}
     // x[slideIndex-1].style.display = "block";
     // setTimeout(carousel, 2000); // Change image every 2 seconds
-// }
+		// var testData=[];
+		// for (var i = 0; i < 10; i++) {
+		// 	testData[i]={
+		// 		nombre: "Doy mascota en adopcion "+i,
+		// 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum.",
+		// 		tipoMascota: "Perro",
+		// 		edadMascota: i,
+		// 		nombreMascota: "Mascota "+i,
+		// 		raza: "raza "+i,
+		// 		vacunas: "ninguna",
+		// 		telefonoContacto: 573101234567+i,
+		// 		emailContacto: "email"+i+"@email.com",
+		// 		otrosDatosContacto: "facebook: usuario"+i,
+		// 		nombreUsuario: "usuario"+i,
+		// 		pais: "pais "+i,
+		// 		ciudad: "ciudad "+i,
+		// 		barrio:"barrio " +i,
+		// 		imagenes: ["imagen1.com","imagen2.com"],
+		// 	}
+		//
+		// 	console.log(Meteor.call('Mascota.addNewAdopt',testData[i]));
+		// }
 	}
 	render() {
-		var testData=[];
-		for (var i = 0; i < 10; i++) {
-			testData[i]={
-				idPost:i,
-				nombre: "Doy mascota en adopcion "+i,
-				descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum.",
-				tipoMascota: "Perro",
-				edadMascota: i,
-				nombreMascota: "Mascota "+i,
-				razaMascota: "raza "+i,
-				vacunas: "ninguna",
-				telefonoContacto: 573101234567+i,
-				emailContacto: "email"+i+"@email.com",
-				otrosDatosContacto: "facebook: usuario"+i,
-				idusuario: i,
-				nombreUsuario: "usuario"+i,
-				pais: "pais "+i,
-				ciudad: "ciudad "+i,
-				barrio:"barrio " +i,
-				imagenes: ["imagen1.com","imagen2.com"],
-				fecha: new Date(),
-				adoptada: false
-			}
-		}
+
 		return(
 		<section>
 			<Router>
@@ -109,9 +92,9 @@ export class App extends Component {
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
 				</div> */}
 
-		      <Route exact path="/" render={() => (<Busqueda posts={testData}/>)} />
+		      <Route exact path="/" render={() => (<Busqueda posts={this.props.posts}/>)} />
 		      <Route path="/post/:idPost" component={verPost}/>
-					<Route path="/myposts" render={() => (<MyPosts posts={testData}/>)}/>
+					<Route path="/myposts" component={MyPosts}/>
 					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
 					<Route path="/form" component={Formulario}/>
 					<Route path="/prueba" component={FileUploadComponent}/>
@@ -128,15 +111,15 @@ export class App extends Component {
 }
 
 
-// App.propTypes = {
-// 	projects : PropTypes.array.isRequired
-// }
+App.propTypes = {
+	posts : PropTypes.array.isRequired
+}
 
 
 export default AppContainer = createContainer(()=>{
-	Meteor.subscribe('publicacion');
+	Meteor.subscribe('mascota');
 
 	return {
-		projects: Publicacion.find({}).fetch(),
+		posts: Mascota.find({}).fetch(),
 	};
 }, App);

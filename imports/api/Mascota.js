@@ -22,6 +22,10 @@ Meteor.methods({
 		}
    nuevaMascota.userId = Meteor.userId();
    nuevaMascota.adoptado = false;
+   nuevaMascota.fecha =new Date();
+
+    console.log(nuevaMascota);
+
   Mascota.insert({ nuevaMascota});
   return "Agregado";
 },
@@ -40,7 +44,7 @@ return mascota;
     throw new Meteor.Error('not-authorized');
   }
 
-Mascota.update({ "_id":id},{$set: { "adoptado":false}});
+Mascota.update({ "_id":id},{$set: { "adoptado":true}});
 
 },
 'Mascota.setDesAdopted'(id){
@@ -67,7 +71,7 @@ Mascota.remove({ "_id":id});
     throw new Meteor.Error('not-authorized');
   }
   var mascota = Mascota.find({"_id":id}).fetch();
-  return mascota
+  return mascota;
 },
 
 

@@ -7,11 +7,20 @@ import Post from "./Post.jsx";
 
 export default class Busqueda extends Component {
 
-f1(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
+constructor(props){
+	super(props);
+	this.state={post:{}};
 }
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
+componentWillMount(){
+	var response = Meteor.call("Mascota.findbyid",this.props.match.params.idPost,(err, res) =>{
+
+	if (err) { console.log(err); }
+	else {
+		this.setState({post:res[0].nuevaMascota});
+		console.log("res",res[0]);
+
+	}
+	});
 }
 componentDidMount(){
 		var acc = document.getElementsByClassName("accordion");
@@ -30,68 +39,63 @@ acc[i].onclick = function() {
 }
 }
 	render() {
+		if(this.state.post.fecha){
+		console.log("arriba es asincronico",console.log(this.state));
 
 		return (
-
 			<div className="row">
 				<div className="col-xs-4">
 					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
 				</div>
 				<div className="col-xs-8">
-					<h2>Post</h2>
+					<h2>{this.state.post.nombre}</h2>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Fecha: dd/mm/aaaa</p>
+						<p>Date: {this.state.post.fecha.getDate()+"/"+this.state.post.fecha.getMonth()+"/"+this.state.post.fecha.getFullYear()}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Nombre: nombre</p>
+						<p>Name: {this.state.post.nombreMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
+						<p>Descripcion: {this.state.post.descripcion} </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Tipo: perro/gato</p>
+						<p>Tipo: {this.state.post.tipoMascota}</p>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-xs-1"></div>
+						<div className="col-xs-11">
+						<p>Raza: {this.state.post.raza}</p>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-xs-1"></div>
+						<div className="col-xs-11">
+						<p>Edad: {this.state.post.edadMascota}</p>
 						</div>
 					</div>
 
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Raza: raza</p>
+						<p>ciudad: {this.state.post.ciudad}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Edad: edad</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>Pais: pais</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>ciudad: ciudad</p>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-xs-1"></div>
-						<div className="col-xs-11">
-						<p>Barrio: barrio</p>
+						<p>Barrio: {this.state.post.barrio}</p>
 						</div>
 					</div>
 					<br/>
@@ -99,26 +103,32 @@ acc[i].onclick = function() {
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Telefono: +123456789098</p>
+						<p>Telefono: {this.state.post.telefonoContacto}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Email: email@email.com</p>
+						<p>Email: {this.state.post.emailContacto}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Otros datos de contacto: otrocontacto</p>
+						<p>Otros datos de contacto: {this.state.post.otrosDatosContacto}</p>
 						</div>
 					</div>
 				</div>
 
 
 			</div>
+
 		);
+	}
+	else{
+		return(<div>Cargando...</div>);
+	}
+
 	}
 }
 
