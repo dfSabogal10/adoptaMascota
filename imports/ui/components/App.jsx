@@ -21,8 +21,23 @@ import {
 export class App extends Component {
 	constructor(props){
 		super(props);
+		this.state={busqueda:false,
+								post:[]}
 	}
+	handleSubmit (e, message) {
+		e.preventDefault();
+		Meteor.call("Mascota.findbpublicationName",0,10,this.refs.nombrePublicacion.value,(err, res) =>{
 
+  	if (err) { console.log(err); }
+  	else {
+  		console.log(res);
+			this.setState({busqueda:true,
+										post:res});
+
+  	}
+  	});
+
+ 	}
 	componentDidMount(){
 		// var slideIndex = 0;
 		// carousel();
@@ -59,8 +74,55 @@ export class App extends Component {
 		// 	console.log(Meteor.call("Mascota.addNewAdopt",testData[i]));
 		// }
 	}
-	render() {
 
+	render() {
+		if(this.state.busqueda){
+			return(
+			<section>
+				<Router>
+					<div>
+				<nav className="navbar navbar-inverse">
+	  			<div className="container-fluid">
+	    			<div className="navbar-header">
+				      <a className="navbar-brand" href="/">Pet family finder</a>
+	    			</div>
+						<div className="col-xs-4">
+							<form onSubmit={this.handleSubmit.bind(this)}>
+								<div className="input-group">
+								<input type="text" ref="nombrePublicacion" className	="form-control" placeholder="Search for..."/>
+									<span className="input-group-btn">
+										<button className="btn btn-primary" onClick={this.buscarpornombre} type="Submit">Go!</button>
+									</span>
+								</div>
+							</form>
+						</div>
+	    			<ul className="nav navbar-nav navbar-right">
+	      		<li><Link to="/myposts">My posts</Link></li>
+	      		<li><Link className="botonPost"to="/form"><button className="btn btn-primary">Post</button></Link></li>
+						<li><Link to="/prueba">Prueba</Link></li>
+
+						<li><AccountsUIWrapper/></li>
+					</ul>
+	  			</div>
+				</nav>
+					{/* <div className="row">
+						<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
+						<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
+					</div> */}
+			      <Route exact path="/" render={() => (<Busqueda posts={this.state.post}/>)} />
+			      <Route path="/post/:idPost" component={verPost}/>
+						<Route path="/myposts" component={MyPosts}/>
+						<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
+						<Route path="/form" component={Formulario}/>
+						<Route path="/prueba" component={FileUploadComponent}/>
+						</div>
+			  </Router>
+		</section>
+
+
+				);
+		}
+		else{
 		return(
 		<section>
 			<Router>
@@ -71,12 +133,14 @@ export class App extends Component {
 			      <a className="navbar-brand" href="/">Pet family finder</a>
     			</div>
 					<div className="col-xs-4">
+						<form onSubmit={this.handleSubmit.bind(this)}>
 							<div className="input-group">
-							<input type="text" className	="form-control" placeholder="Search for..."/>
+							<input type="text" ref="nombrePublicacion" className	="form-control" placeholder="Search for..."/>
 								<span className="input-group-btn">
-									<button className="btn btn-primary" type="button">Go!</button>
+									<button className="btn btn-primary" onClick={this.buscarpornombre} type="Submit">Go!</button>
 								</span>
 							</div>
+						</form>
 					</div>
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
@@ -91,22 +155,19 @@ export class App extends Component {
 					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
 				</div> */}
-
 		      <Route exact path="/" render={() => (<Busqueda posts={this.props.posts}/>)} />
 		      <Route path="/post/:idPost" component={verPost}/>
 					<Route path="/myposts" component={MyPosts}/>
 					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
 					<Route path="/form" component={Formulario}/>
 					<Route path="/prueba" component={FileUploadComponent}/>
-
-
-
 					</div>
 		  </Router>
 	</section>
 
 
 			);
+		}
 	}
 }
 

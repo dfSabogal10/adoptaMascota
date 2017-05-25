@@ -136,9 +136,8 @@ console.log(mayor);
     window.alert("You must login to vote");
     throw new Meteor.Error("not-authorized");
   }
-console.log(mayor);
 
-  var mascota = Mascota.find({ "nuevaMascota.name":name}, {sort: { "nuevaMascota.name": -1 } ,skip:salto,limit:limit}).fetch();
+  var mascota = Mascota.find({ "nuevaMascota.nombre":name}, {sort: { "nuevaMascota.nombre": -1 } ,skip:salto,limit:limit}).fetch();
 
   return mascota;
 },

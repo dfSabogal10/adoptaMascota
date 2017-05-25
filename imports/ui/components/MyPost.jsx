@@ -12,25 +12,40 @@ export default class MyPost extends Component {
 
 constructor(props){
 	super(props);
+
 }
 
 eliminarPost(){
 
 }
 
+componentWillMount(){
+	this.state={adoptado:this.props.post.nuevaMascota.adoptado};
+}
 marcarComoAdoptado(){
-	console.log(this.props.post.nuevaMascota.adoptado);
-	Meteor.call('Mascota.setAdopted',this.props.post._id);
-	console.log(this.props.post.nuevaMascota.adoptado);
+	Meteor.call('Mascota.setAdopted',this.props.post._id, (err, res) =>{
+	if (err) { console.log(err); }
+	else {
+		this.setState({adoptado:true});
+	}
+	}
+	);
 }
 
+
 desmarcarComoAdoptado(){
-	Meteor.call('Mascota.setDesAdopted',this.props.post._id);
+	Meteor.call('Mascota.setDesAdopted',this.props.post._id, (err, res) =>{
+	if (err) { console.log(err); }
+	else {
+		this.setState({adoptado:false});
+	}
+	});
 }
 
 	render() {
-		console.log(this.props);
-		if(!this.props.post.nuevaMascota.adoptado)
+		console.log("adoptadostate",this.state.adoptado);
+		console.log("adoptadoprops",this.props.post.nuevaMascota.adoptado);
+		if(!this.state.adoptado)
 		{
 
 		return (
@@ -139,7 +154,7 @@ desmarcarComoAdoptado(){
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
-						<button id="botonAdoptar"  className="btn btn-default" onClick={this.desmarcarComoAdoptado.bind(this)}>Mark as adopted</button>
+						<button id="botonAdoptar"  className="btn btn-default" onClick={this.desmarcarComoAdoptado.bind(this)}>Mark as unadopted</button>
 						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
 						</div>
 					</div>

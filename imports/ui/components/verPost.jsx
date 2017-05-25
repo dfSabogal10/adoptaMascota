@@ -18,7 +18,6 @@ componentWillMount(){
 	else {
 		this.setState({post:res[0].nuevaMascota});
 		console.log("res",res[0]);
-
 	}
 	});
 }
