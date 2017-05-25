@@ -35,7 +35,7 @@ export default class MyPosts extends Component {
 				//console.log(res);
 			//}
 			//});
-			var response = Meteor.call("Mascota.setDesAdopted","8qByTM55iGRnCMETs",(err, res) =>{
+			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
 			if (err) { console.log(err); }
 			else {
 				this.setState({posts:res});

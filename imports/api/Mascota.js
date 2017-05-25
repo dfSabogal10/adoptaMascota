@@ -44,6 +44,7 @@ return mascota;
   }
 
 Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":true}});
+console.log("lohizo");
 
 },
 "Mascota.setDesAdopted"(id){
@@ -52,12 +53,8 @@ Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":true}});
     throw new Meteor.Error("not-authorized");
   }
 
-<<<<<<< HEAD
-Mascota.update({ "_id":id},{$set: { "adoptado":false}});
-=======
-Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":false}});
->>>>>>> 9fa7e45027bda7b8393b995d85663dd9f5cda401
 
+Mascota.update({ "_id":id},{$set: { "nuevaMascota.adoptado":false}});
 },
 "Mascota.deletePost"(id){
   if (! Meteor.userId()) {

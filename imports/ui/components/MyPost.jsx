@@ -17,12 +17,6 @@ constructor(props){
 eliminarPost(){
 
 }
-<<<<<<< HEAD
-=======
-marcarComoAdoptado(id){
-
-Meteor.call('Mascota.setAdopted',"NOMBRE DE LA MASCOTa");
->>>>>>> d2869de12f9a78a8bc492f6cc8db747755114af8
 
 marcarComoAdoptado(){
 	console.log(this.props.post.nuevaMascota.adoptado);
@@ -48,40 +42,40 @@ desmarcarComoAdoptado(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to="seeMyPost/"><h3>post 1</h3></Link>
+							<Link to={"seeMyPost/"+this.props.post._id}><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">dd|mm/yyyy</p>
+							<p className="fechapost">{this.props.post.nuevaMascota.fecha.getDate()+"/"+this.props.post.nuevaMascota.fecha.getMonth()+"/"+this.props.post.nuevaMascota.fecha.getFullYear()}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
+						<p>Description:{this.props.post.nuevaMascota.descripcion} </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>nombre: nombre</p>
+						<p>name: {this.props.post.nuevaMascota.nombreMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>raza: raza</p>
+						<p>breed: {this.props.post.nuevaMascota.raza}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>edad: raza</p>
+						<p>age: {this.props.post.nuevaMascota.edadMascota}</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>ciudad: ciudad</p>
+						<p>city: {this.props.post.nuevaMascota.ciudad}</p>
 						</div>
 					</div>
 					<div className="row">
@@ -91,7 +85,6 @@ desmarcarComoAdoptado(){
 						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
 						</div>
 					</div>
-					<uploadFileForm/>
 				</div>
 
 			</div>
