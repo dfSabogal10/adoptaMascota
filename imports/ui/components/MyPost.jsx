@@ -18,6 +18,8 @@ eliminarPost(){
 }
 marcarComoAdoptado(id){
 
+Meteor.call('Mascota.setAdopted',"NOMBRE DE LA MASCOTa");
+
 }
 
 f1(){

@@ -8,6 +8,18 @@ import { Template } from 'meteor/templating';
 
 export default class MyPosts extends Component {
 
+	componentWillMount () {
+			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
+
+			if (err) { console.log(err); }
+			else {
+			console.log("MISPOST:",res);
+			}
+			});
+	}
+
+
+
 f1(){
 	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
 }

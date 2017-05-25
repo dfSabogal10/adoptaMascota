@@ -6,6 +6,8 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import verPost from './verPost.jsx';
 import MyPosts from './MyPosts.jsx';
 import seeMyPost from './seeMyPost.jsx';
+import Formulario from './Formulario.jsx';
+
 import {
 		BrowserRouter as Router,
 		Route,
@@ -95,6 +97,7 @@ export class App extends Component {
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
       		<li><Link to="/postMyPet">Post</Link></li>
+					<li><Link to="/form">Add Pet</Link></li>
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
@@ -108,6 +111,8 @@ export class App extends Component {
 		      <Route path="/post/:idPost" component={verPost}/>
 					<Route path="/myposts" render={() => (<MyPosts posts={testData}/>)}/>
 					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
+					<Route path="/form" component={Formulario}/>
+
 
 
 					</div>
