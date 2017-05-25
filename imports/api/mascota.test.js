@@ -47,6 +47,36 @@ if (Meteor.isServer) {
         // Verify that the method does what we expected
         assert.equal(Mascota.find().count(), 1);
       }),
+      it('Let me watch only my post', () => {
+      const addNewAdopt = Meteor.server.method_handlers['Mascota.addNewAdopt'];
+      const invocation = { userId };
+
+        const when = new Date();
+        let formData = {
+         name: "doggie",
+         description: "is the best doggie in the world",
+         tipoMascota: "Dog",
+         edadMascota: "1",
+         nombreMasctoa: "Ricky",
+         vacunas: "none",
+         telefonoContacto: "123123",
+         emailContacto: "something@hotmail.com",
+         otrosDatosContacto: "Call my friend",
+         barrio: "Calle falsa 123",
+         ciudad: "Bogota",
+         fecha: "none",
+         raza: "doggie"
+
+        }
+        // Run the method with `this` set to the fake invocation
+        addNewAdopt.apply(invocation, [formData]);
+        var papitas = Mascota.find().fetch();
+        const view = Meteor.server.method_handlers['Mascota.viewMyPosts'];
+        view.apply(invocation);
+      //  console.log(view)
+        // Verify that the method does what we expected
+        assert.equal(Mascota.find().count(), 1);
+      }),
       it('Let me to adopt a Pet', () => {
       const addNewAdopt = Meteor.server.method_handlers['Mascota.addNewAdopt'];
       const invocation = { userId };
@@ -75,7 +105,67 @@ if (Meteor.isServer) {
         adopt.apply(invocation, [papitas[0]._id]);
         // Verify that the method does what we expected
         assert.equal(Mascota.find({"nuevaMascota.adoptado":true}).count(), 1);
-      });
+      }),
+
+      it('Let me send the Pet for adoption again', () => {
+      const addNewAdopt = Meteor.server.method_handlers['Mascota.addNewAdopt'];
+      const invocation = { userId };
+
+        const when = new Date();
+        let formData = {
+         name: "doggie",
+         description: "is the best doggie in the world",
+         tipoMascota: "Dog",
+         edadMascota: "1",
+         nombreMasctoa: "Ricky",
+         vacunas: "none",
+         telefonoContacto: "123123",
+         emailContacto: "something@hotmail.com",
+         otrosDatosContacto: "Call my friend",
+         barrio: "Calle falsa 123",
+         ciudad: "Bogota",
+         fecha: "none",
+         raza: "doggie"
+
+        }
+        // Run the method with `this` set to the fake invocation
+        addNewAdopt.apply(invocation, [formData]);
+        var papitas = Mascota.find().fetch();
+        const adopt = Meteor.server.method_handlers['Mascota.setDesAdopted'];
+        adopt.apply(invocation, [papitas[0]._id]);
+        // Verify that the method does what we expected
+        assert.equal(Mascota.find({"nuevaMascota.adoptado":false}).count(), 1);
+      }),
+
+            it('Let me delete a post', () => {
+            const addNewAdopt = Meteor.server.method_handlers['Mascota.addNewAdopt'];
+            const invocation = { userId };
+
+              const when = new Date();
+              let formData = {
+               name: "doggie",
+               description: "is the best doggie in the world",
+               tipoMascota: "Dog",
+               edadMascota: "1",
+               nombreMasctoa: "Ricky",
+               vacunas: "none",
+               telefonoContacto: "123123",
+               emailContacto: "something@hotmail.com",
+               otrosDatosContacto: "Call my friend",
+               barrio: "Calle falsa 123",
+               ciudad: "Bogota",
+               fecha: "none",
+               raza: "doggie"
+
+              }
+              // Run the method with `this` set to the fake invocation
+              addNewAdopt.apply(invocation, [formData]);
+              var papitas = Mascota.find().fetch();
+              const removethe = Meteor.server.method_handlers['Mascota.deletePost'];
+              removethe.apply(invocation, [papitas[0]._id]);
+              // Verify that the method does what we expected
+              assert.equal(Mascota.find().count(), 0);
+            });
 
 
       });
