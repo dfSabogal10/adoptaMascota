@@ -3,7 +3,7 @@ import { FilesCollection } from 'meteor/ostrio:files';
 
 const Images = new FilesCollection({
   debug: true,
-  collectionName: 'Images',
+  collectionName: 'Imagessssss',
   allowClientCode: false, // Disallow remove files from Client
   onBeforeUpload: function (file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats
@@ -15,12 +15,13 @@ const Images = new FilesCollection({
 });
 
 if (Meteor.isServer) {
-  Images.denyClient();
-  Meteor.publish('files.images.all', function () {
+  Images.allowClient();
+  Meteor.publish('images', function imagesPublication (){
     return Images.find().cursor;
   });
-} else {
-  Meteor.subscribe('files.images.all');
 }
+
+
+
 
 export default Images;
