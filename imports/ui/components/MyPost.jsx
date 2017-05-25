@@ -16,7 +16,7 @@ constructor(props){
 eliminarPost(){
 
 }
-marcarComoAdoptado(){
+marcarComoAdoptado(id){
 
 Meteor.call('Mascota.setAdopted',"NOMBRE DE LA MASCOTa");
 
@@ -29,8 +29,6 @@ añadirAFavoritos(){
 	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
 }
 	render() {
-		console.log(this.props);
-
 		return (
 			<div className="row">
 
@@ -40,49 +38,50 @@ añadirAFavoritos(){
 				<div className="col-xs-9">
 					<div className="row">
 						<div className="col-xs-10">
-							<Link to={"seeMyPost/"+this.props.post._id}><h3>{this.props.post.nuevaMascota.nombre}</h3></Link>
+							<Link to="seeMyPost/"><h3>post 1</h3></Link>
 						</div>
 						<div className="col-xs-2">
-							<p className="fechapost">{this.props.post.nuevaMascota.fecha.getDate()+"/"+this.props.post.nuevaMascota.fecha.getMonth()+"/"+this.props.post.nuevaMascota.fecha.getFullYear()}</p>
+							<p className="fechapost">dd|mm/yyyy</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>Description:{this.props.post.nuevaMascota.descripcion} </p>
+						<p>Descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat massa a leo cursus tempus. Donec rutrum vehicula auctor. Donec efficitur nunc ut vestibulum lobortis. Suspendisse fringilla cursus condimentum. </p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>name: {this.props.post.nuevaMascota.nombreMascota}</p>
+						<p>nombre: nombre</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>breed: {this.props.post.nuevaMascota.raza}</p>
+						<p>raza: raza</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>age: {this.props.post.nuevaMascota.edadMascota}</p>
+						<p>edad: raza</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>city: {this.props.post.nuevaMascota.ciudad}</p>
+						<p>ciudad: ciudad</p>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
-						<button id="botonAdoptar"  className="btn btn-primary" onClick={this.marcarComoAdoptado()}>Mark as adopted</button>
+						<button id="botonAdoptar"  className="btn btn-primary" onClick={this.marcarComoAdoptado(this.id)}>Mark as adopted</button>
 						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
 						</div>
 					</div>
+					<uploadFileForm/>
 				</div>
 
 			</div>
