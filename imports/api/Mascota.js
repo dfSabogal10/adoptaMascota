@@ -34,7 +34,6 @@ Meteor.methods({
     throw new Meteor.Error('not-authorized');
   }
 var user=Meteor.userId();
-console.log(user);
 
 var mascota = Mascota.find({"nuevaMascota.userId":user}).fetch();
 
@@ -42,13 +41,13 @@ console.log(mascota);
 
 return mascota;
 },
-'Mascota.setAdopted'(name){
+'Mascota.setAdopted'(id){
   if (! Meteor.userId()) {
     window.alert('You must login to vote');
     throw new Meteor.Error('not-authorized');
   }
 
-Mascota.update({ "nuevaMascota.formName":name},{$set: { "adoptado":false}});
+Mascota.update({ "_id":id},{$set: { "adoptado":false}});
 
 },
 
