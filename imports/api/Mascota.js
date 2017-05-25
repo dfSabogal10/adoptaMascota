@@ -21,7 +21,7 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		}
    nuevaMascota.userId = Meteor.userId();
-   nuevaMascota.adoptado = true;
+   nuevaMascota.adoptado = false;
   Mascota.insert({ nuevaMascota});
   return "Agregado";
 },
@@ -58,7 +58,7 @@ Mascota.update({ "_id":id},{$set: { "adoptado":true}});
     throw new Meteor.Error('not-authorized');
   }
 
-Mascota.delete({ "_id":id});
+Mascota.remove({ "_id":id});
 
 },
 'Mascota.findbyid'(id){
@@ -71,15 +71,65 @@ Mascota.delete({ "_id":id});
 },
 
 
-'Mascota.findbydate'(page,limit){
+'Mascota.findbydate'(salto,limit){
   if (! Meteor.userId()) {
     window.alert('You must login to vote');
     throw new Meteor.Error('not-authorized');
   }
-  page =page*10
-  var mascota = Mascota.find({}, {sort: {fecha: -1}}, {skip:page} ,{limit:10} ).fetch();
+  var mascota = Mascota.find({}, {sort: { "nuevaMascota.fecha": -1 } ,skip:salto,limit:limit}).fetch();
+
   return mascota;
 },
+'Mascota.viewallnotAdopted'(salto,limit){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+var user=Meteor.userId();
+var mascota = Mascota.find({"nuevaMascota.adoptado":false}, {sort: { "nuevaMascota.fecha": -1 } ,skip:salto,limit:limit}).fetch();
+return mascota;
+},
+'Mascota.findbytype'(salto,limit,type){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+  var mascota = Mascota.find({"nuevaMascota.tipoMascota":type}, {sort: { "nuevaMascota.tipoMascota": -1 } ,skip:salto,limit:limit}).fetch();
+
+  return mascota;
+},
+'Mascota.findbyraze'(salto,limit,raza){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+  var mascota = Mascota.find({"nuevaMascota.raza":raza}, {sort: { "nuevaMascota.raza": -1 } ,skip:salto,limit:limit}).fetch();
+
+  return mascota;
+},
+'Mascota.findbycity'(salto,limit,ciudad){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+  var mascota = Mascota.find({"nuevaMascota.ciudad":ciudad}, {sort: { "nuevaMascota.ciudad": -1 } ,skip:salto,limit:limit}).fetch();
+
+  return mascota;
+},
+'Mascota.findbyage'(salto,limit,edad){
+  if (! Meteor.userId()) {
+    window.alert('You must login to vote');
+    throw new Meteor.Error('not-authorized');
+  }
+console.log(mayor);
+
+  var mascota = Mascota.find({ "nuevaMascota.edadMascota":edad}, {sort: { "nuevaMascota.edadMascota": -1 } ,skip:salto,limit:limit}).fetch();
+
+  return mascota;
+},
+
+
+
 
 
 });

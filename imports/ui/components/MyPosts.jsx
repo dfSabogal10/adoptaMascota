@@ -9,22 +9,27 @@ import { Template } from 'meteor/templating';
 export default class MyPosts extends Component {
 
 	componentWillMount () {
-			var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
+	//		var response = Meteor.call("Mascota.viewMyPosts",(err, res) =>{
 
-			if (err) { console.log(err); }
-			else {
-			console.log("MISPOST:",res);
-			}
-			});
+		//	if (err) { console.log(err); }
+			//else {
+			//console.log("MISPOST:",res);
+			//}
+		//	});
 
-			var otro = Meteor.call("Mascota.findbydate",1,10,(err, res) =>{
-			if (err) { console.log(err); }
-			else {
-			console.log("MISPOST:",res);
-			}
-			});
+			//var otro = Meteor.call("Mascota.findbydate",1,10,(err, res) =>{
+			//if (err) { console.log(err); }
+			//else {
+			//console.log("MISPOST:",res);
+			//}
+			//});
 
-
+var otro = Meteor.call("Mascota.findbycity",0,10,"m",(err, res) =>{
+if (err) { console.log(err); }
+else {
+console.log("MISPOST:",res);
+}
+});
 
 	}
 
