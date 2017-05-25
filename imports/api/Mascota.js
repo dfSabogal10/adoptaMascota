@@ -33,7 +33,8 @@ Meteor.methods({
     window.alert('You must login to vote');
     throw new Meteor.Error('not-authorized');
   }
-Mascota.find({ userId:Meteor.userId()});
+var mascota = Mascota.find({ userId:Meteor.userId()}).fetch();
+return mascota;
 },
 'Mascota.setAdopted'(name){
   if (! Meteor.userId()) {

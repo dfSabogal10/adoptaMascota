@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {createContainer} from "meteor/react-meteor-data";
-const reactFormContainer = document.querySelector('.react-form-container');
+const reactFormContainer = document.querySelector(".react-form-container");
 
 
 class ReactFormLabel extends React.Component {
@@ -23,18 +23,18 @@ export default class Formulario extends Component {
   super(props);
 
   this.state = {
-   nombre: '',
-   despricion: '',
-   tipoMascota: '',
-   edadMascota: '',
-	 nombreMascota: '',
-	 vacunas: '',
-	 telefonoContacto: '',
-	 emailContacto: '',
-	 otrosDatosContacto: '',
-	 ciudad: '',
-	 barrio: '',
-	 fecha: ''
+   nombre: "",
+   despricion: "",
+   tipoMascota: "",
+   edadMascota: "",
+	 nombreMascota: "",
+	 vacunas: "",
+	 telefonoContacto: "",
+	 emailContacto: "",
+	 otrosDatosContacto: "",
+	 ciudad: "",
+	 barrio: "",
+	 fecha: ""
 
   }
 	this.handleChange = this.handleChange.bind(this);
@@ -92,19 +92,19 @@ export default class Formulario extends Component {
   console.log("Enviado")
 
   this.setState({
-		nombre: '',
-		despricion: '',
-		tipoMascota: '',
-		edadMascota: '',
-		nombreMascota: '',
-		vacunas: '',
-		telefonoContacto: '',
-		emailContacto: '',
-		otrosDatosContacto: '',
-		ciudad: '',
-		barrio: '',
-		imagenes: '',
-		fecha: ''
+		nombre: "",
+		despricion: "",
+		tipoMascota: "",
+		edadMascota: "",
+		nombreMascota: "",
+		vacunas: "",
+		telefonoContacto: "",
+		emailContacto: "",
+		otrosDatosContacto: "",
+		ciudad: "",
+		barrio: "",
+		imagenes: "",
+		fecha: ""
 	  });
  };
 
@@ -119,69 +119,69 @@ export default class Formulario extends Component {
 
         return (
 
- <form className='react-form' onSubmit={this.handleSubmit}>
+ <form className="react-form" onSubmit={this.handleSubmit}>
 	 <h1>Ingresa los datos del amiguito</h1>
 
-    <fieldset className='form-group'>
-     <ReactFormLabel htmlFor='formName' title='Name:' />
-     <input id='formName' className='form-input' ref="name" name='name' type='text' required onChange={this.handleChange} value={this.state.nombre} />
+    <fieldset className="form-group">
+     <ReactFormLabel htmlFor="formName" title="Name:" />
+     <input id="formName" className="form-input" ref="name" name="name" type="text" required onChange={this.handleChange} value={this.state.nombre} />
     </fieldset>
 
-		 <fieldset className='form-group'>
-			<ReactFormLabel htmlFor='formDescription' title='Descricion:' />
-			<input id='formDescription' className='form-input' ref="description" name='description' type='text'  onChange={this.handleChange} value={this.state.despricion} />
+		 <fieldset className="form-group">
+			<ReactFormLabel htmlFor="formDescription" title="Descricion:" />
+			<input id="formDescription" className="form-input" ref="description" name="description" type="text"  onChange={this.handleChange} value={this.state.despricion} />
 		 </fieldset>
 
-		 <fieldset className='form-group'>
-			<ReactFormLabel htmlFor='formTipoMascota' title='Tipo:' />
-			<input id='formTipoMascota' className='form-input' ref="tipoMascota"  name='tipoMascota' type='text'  onChange={this.handleChange} value={this.state.tipoMascota} />
+		 <fieldset className="form-group">
+			<ReactFormLabel htmlFor="formTipoMascota" title="Tipo:" />
+			<input id="formTipoMascota" className="form-input" ref="tipoMascota"  name="tipoMascota" type="text"  onChange={this.handleChange} value={this.state.tipoMascota} />
 		 </fieldset>
 
-		 <fieldset className='form-group'>
-		 <ReactFormLabel htmlFor='formEdadMascota' title='Edad: (Años)' />
-		 <input id='formEdadMascota' className='form-input' ref="edadMascota" name='edadMascota' type='number' required onChange={this.handleChange} value={this.state.edadMascota} />
+		 <fieldset className="form-group">
+		 <ReactFormLabel htmlFor="formEdadMascota" title="Edad: (Años)" />
+		 <input id="formEdadMascota" className="form-input" ref="edadMascota" name="edadMascota" type="number" required onChange={this.handleChange} value={this.state.edadMascota} />
 		</fieldset>
 
-		<fieldset className='form-group'>
-		<ReactFormLabel htmlFor='formNombreMascota' title='Nombre de la mascota:' />
-		<input id='formNombreMascota' className='form-input' ref="nombreMasctoa" name='nombreMasctoa' type='text'  onChange={this.handleChange} value={this.state.nombreMascota} />
+		<fieldset className="form-group">
+		<ReactFormLabel htmlFor="formNombreMascota" title="Nombre de la mascota:" />
+		<input id="formNombreMascota" className="form-input" ref="nombreMasctoa" name="nombreMasctoa" type="text"  onChange={this.handleChange} value={this.state.nombreMascota} />
 	 </fieldset>
 
-	 <fieldset className='form-group'>
-	 <ReactFormLabel htmlFor='formVacunas' title='Vacunas:' />
-	 <input id='formVacunas' className='form-input' ref="vacunas" name='vacunas' type='text'  onChange={this.handleChange} value={this.state.vacunas} />
+	 <fieldset className="form-group">
+	 <ReactFormLabel htmlFor="formVacunas" title="Vacunas:" />
+	 <input id="formVacunas" className="form-input" ref="vacunas" name="vacunas" type="text"  onChange={this.handleChange} value={this.state.vacunas} />
 	</fieldset>
 
-	<fieldset className='form-group'>
-	<ReactFormLabel htmlFor='formTelefonoContacto' title='Telefono de Contacto:' />
-	<input id='formTelefonoContacto' className='form-input'  ref="telefono"  name='telefono' type='number' required onChange={this.handleChange} value={this.state.telefonoContacto} />
+	<fieldset className="form-group">
+	<ReactFormLabel htmlFor="formTelefonoContacto" title="Telefono de Contacto:" />
+	<input id="formTelefonoContacto" className="form-input"  ref="telefono"  name="telefono" type="number" required onChange={this.handleChange} value={this.state.telefonoContacto} />
  </fieldset>
 
- <fieldset className='form-group'>
-	<ReactFormLabel htmlFor='formEmailContacto' title='Email:' />
-	<input id='formEmailContacto' className='form-input'  ref="email"  name='email' type='email' required onChange={this.handleChange} value={this.state.emailContacto} />
+ <fieldset className="form-group">
+	<ReactFormLabel htmlFor="formEmailContacto" title="Email:" />
+	<input id="formEmailContacto" className="form-input"  ref="email"  name="email" type="email" required onChange={this.handleChange} value={this.state.emailContacto} />
  </fieldset>
 
- <fieldset className='form-group'>
- <ReactFormLabel htmlFor='formOtrosDatosContacto' title='Otros datos de Contacto:' />
- <input id='formOtrosDatosContacto' className='form-textarea' ref="datoscontacto" name='datoscontacto' type='text'  onChange={this.handleChange} value={this.state.otrosDatosContacto} />
+ <fieldset className="form-group">
+ <ReactFormLabel htmlFor="formOtrosDatosContacto" title="Otros datos de Contacto:" />
+ <input id="formOtrosDatosContacto" className="form-textarea" ref="datoscontacto" name="datoscontacto" type="text"  onChange={this.handleChange} value={this.state.otrosDatosContacto} />
  </fieldset>
 
 
 
-  <fieldset className='form-group'>
-  <ReactFormLabel htmlFor='formBarrio' title='Barrio:' />
-  <input id='formBarrio' className='form-input' ref="barrio" name='barrio' type='text'  onChange={this.handleChange} value={this.state.barrio} />
+  <fieldset className="form-group">
+  <ReactFormLabel htmlFor="formBarrio" title="Barrio:" />
+  <input id="formBarrio" className="form-input" ref="barrio" name="barrio" type="text"  onChange={this.handleChange} value={this.state.barrio} />
   </fieldset>
 
-	<fieldset className='form-group'>
-  <ReactFormLabel htmlFor='formCiudad' title='Ciudad:' />
-  <input id='formCiudad' className='form-input'  ref="ciudad" name='ciudad' type='text'  onChange={this.handleChange} value={this.state.ciudad} />
+	<fieldset className="form-group">
+  <ReactFormLabel htmlFor="formCiudad" title="Ciudad:" />
+  <input id="formCiudad" className="form-input"  ref="ciudad" name="ciudad" type="text"  onChange={this.handleChange} value={this.state.ciudad} />
   </fieldset>
 
-	<fieldset className='form-group'>
-  <ReactFormLabel htmlFor='formBarrio' title='Fecha' />
-  <input id='formBarrio' className='form-input' ref="fecha" name='fecha' type='date' required onChange={this.handleChange} value={this.state.barrio} />
+	<fieldset className="form-group">
+  <ReactFormLabel htmlFor="formBarrio" title="Fecha" />
+  <input id="formBarrio" className="form-input" ref="fecha" name="fecha" type="date" required onChange={this.handleChange} value={this.state.barrio} />
   </fieldset>
 
 
@@ -191,8 +191,8 @@ export default class Formulario extends Component {
 
 
 
-    <div className='form-group'>
-     <input id='formButton' className='btn' type='submit' placeholder='Send message' />
+    <div className="form-group">
+     <input id="formButton" className="btn" type="submit" placeholder="Send message" />
     </div>
    </form>
 
