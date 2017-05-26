@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   Meteor.publish('projects', function projectsPublication() {
 
     return Projects.find();
-
+//ASDAS
   });
 }
 
