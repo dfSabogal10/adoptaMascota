@@ -54,7 +54,7 @@ componentDidMount(){
 
 			<div className="row">
 				<div className="col-xs-4">
-					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<img src={this.state.post.imagen||"https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"}/>
 					<input className="btn btn-default btn-file form-control" type="file" id="file-input"  onChange={this.initUpload.bind(this)}/>
 
 				</div>

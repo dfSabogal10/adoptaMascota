@@ -6,13 +6,21 @@ import {Link} from 'react-router-dom';
 
 
 export default class Post extends Component {
+	componentDidMount(){
+		if(this.props.post.nuevaMascota.imagen){
+			console.log("entra");
+			var image = document.getElementById(this.props.post._id);
+			image.src = this.props.post.nuevaMascota.imagen;
+			image.hidden=false;
+		}
 
+	}
 
 	render() {
 		return (
 			<div className="row">
 				<div className="col-xs-3">
-					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<img id={this.props.post._id}src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
 				</div>
 				<div className="col-xs-9">
 					<div className="row">
@@ -38,7 +46,7 @@ export default class Post extends Component {
 					<div className="row">
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11">
-						<p>breed: {this.props.post.nuevaMascota.razaMascota}</p>
+						<p>breed: {this.props.post.nuevaMascota.raza}</p>
 						</div>
 					</div>
 					<div className="row">

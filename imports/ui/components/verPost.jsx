@@ -9,14 +9,15 @@ export default class Busqueda extends Component {
 
 constructor(props){
 	super(props);
-	this.state={post:{}};
+	this.state={	_id:"",
+								post:{}};
 }
 componentWillMount(){
 	var response = Meteor.call("Mascota.findbyid",this.props.match.params.idPost,(err, res) =>{
 
 	if (err) { console.log(err); }
 	else {
-		this.setState({post:res[0].nuevaMascota});
+		this.setState({_id: res[0]._id, post:res[0].nuevaMascota});
 		console.log("res",res[0]);
 	}
 	});
@@ -37,14 +38,13 @@ acc[i].onclick = function() {
 }
 }
 }
+
 	render() {
 		if(this.state.post.fecha){
-		console.log("arriba es asincronico",console.log(this.state));
-
 		return (
 			<div className="row">
 				<div className="col-xs-4">
-					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<img id={this.state._id} src={this.state.post.imagen||"https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"}/>
 				</div>
 				<div className="col-xs-8">
 					<h2>{this.state.post.nombre}</h2>

@@ -24,6 +24,9 @@ export class App extends Component {
 		this.state={busqueda:false,
 								post:[]}
 	}
+	setBusquedaFalse(){
+		this.setState({busqueda: false});
+	}
 	handleSubmit (e, message) {
 		e.preventDefault();
 		Meteor.call("Mascota.findbpublicationName",0,10,this.refs.nombrePublicacion.value,(err, res) =>{
@@ -91,7 +94,7 @@ export class App extends Component {
 								<div className="input-group">
 								<input type="text" ref="nombrePublicacion" className	="form-control" placeholder="Search for..."/>
 									<span className="input-group-btn">
-										<button className="btn btn-primary" onClick={this.buscarpornombre} type="Submit">Go!</button>
+										<Link to="/"><button className="btn btn-primary" onClick={this.buscarpornombre} type="Submit">Go!</button></Link>
 									</span>
 								</div>
 							</form>
@@ -99,8 +102,6 @@ export class App extends Component {
 	    			<ul className="nav navbar-nav navbar-right">
 	      		<li><Link to="/myposts">My posts</Link></li>
 	      		<li><Link className="botonPost"to="/form"><button className="btn btn-primary">Post</button></Link></li>
-						<li><Link to="/prueba">Prueba</Link></li>
-
 						<li><AccountsUIWrapper/></li>
 					</ul>
 	  			</div>
@@ -109,12 +110,11 @@ export class App extends Component {
 						<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 						<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
 					</div> */}
-			      <Route exact path="/" render={() => (<Busqueda posts={this.state.post}/>)} />
+			      <Route exact path="/" render={() => (<Busqueda setSearchboxFalse={this.setBusquedaFalse.bind(this)} searchbox={true} posts={this.state.post}/>)} />
 			      <Route path="/post/:idPost" component={verPost}/>
 						<Route path="/myposts" component={MyPosts}/>
 						<Route path="/seeMyPost/:idPost" component={seeMyPost}/>
 						<Route path="/form" component={Formulario}/>
-						<Route path="/prueba" component={FileUploadComponent}/>
 						</div>
 			  </Router>
 		</section>
@@ -155,7 +155,7 @@ export class App extends Component {
 					<img className="mySlides w3-animate-right" src="http://4kwallpapers.site/wp-content/uploads/2011/03/brown-yawning-dog-1080p-wallpaper.jpg"/>
 					<img className="mySlides w3-animate-right" src="http://www.ihdimages.com/wp-content/uploadsktz/2014/09/dog_wallpaper_1080p.jpg"/>
 				</div> */}
-		      <Route exact path="/" render={() => (<Busqueda posts={this.props.posts}/>)} />
+		      <Route exact path="/" render={() => (<Busqueda setSearchboxFalse={this.setBusquedaFalse.bind(this)} searchbox={false} posts={this.props.posts}/>)} />
 		      <Route path="/post/:idPost" component={verPost}/>
 					<Route path="/myposts" component={MyPosts}/>
 					<Route path="/seeMyPost/:idPost" component={seeMyPost}/>

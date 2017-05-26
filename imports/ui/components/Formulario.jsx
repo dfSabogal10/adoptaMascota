@@ -35,7 +35,7 @@ export default class Formulario extends Component {
 	 ciudad: "",
 	 barrio: "",
 	 raza: "",
-imagen : "",
+   imagen : "",
 	 fecha: ""
 
   }
@@ -84,17 +84,17 @@ imagen : "",
  handleSubmit (e, message) {
   e.preventDefault();
   let formData = {
-   name: this.refs.name.value,
+   nom: this.refs.name.value,
    description: this.refs.description.value,
    tipoMascota: this.refs.tipoMascota.value,
    edadMascota: this.refs.edadMascota.value,
-	 nombreMasctoa: this.refs.nombreMasctoa.value,
+	 nombreMascota: this.refs.nombreMasctoa.value,
 	 vacunas: this.refs.vacunas.value,
 	 telefonoContacto: this.refs.telefono.value,
 	 emailContacto: this.refs.email.value,
 	 otrosDatosContacto: this.refs.datoscontacto.value,
 	 barrio: this.refs.barrio.value,
-	 ciudad: this.refs.barrio.value,
+	 ciudad: this.refs.ciudad.value,
 	 fecha: this.refs.fecha.value,
 	 raza: this.refs.raza.value,
    imagen:jesus.result

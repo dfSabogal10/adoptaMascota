@@ -124,7 +124,6 @@ return mascota;
     window.alert("You must login to add a new pet");
     throw new Meteor.Error("not-authorized");
   }
-console.log(mayor);
 
   var mascota = Mascota.find({ "nuevaMascota.edadMascota":edad}, {sort: { "nuevaMascota.edadMascota": -1 } ,skip:salto,limit:limit}).fetch();
 

@@ -31,7 +31,15 @@ marcarComoAdoptado(){
 	}
 	);
 }
+componentDidMount(){
+	if(this.props.post.nuevaMascota.imagen){
+		console.log("entra");
+		var image = document.getElementById(this.props.post._id);
+		image.src = this.props.post.nuevaMascota.imagen;
+		image.hidden=false;
+	}
 
+}
 
 desmarcarComoAdoptado(){
 	Meteor.call('Mascota.setDesAdopted',this.props.post._id, (err, res) =>{
@@ -52,7 +60,7 @@ desmarcarComoAdoptado(){
 			<div className="row">
 
 				<div className="col-xs-3">
-					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<img id={this.props.post._id} src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
 				</div>
 				<div className="col-xs-9">
 					<div className="row">
@@ -97,7 +105,7 @@ desmarcarComoAdoptado(){
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
 						<button id="botonAdoptar"  className="btn btn-primary" onClick={this.marcarComoAdoptado.bind(this)}>Mark as adopted</button>
-						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
+						{/* <button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button> */}
 						</div>
 					</div>
 				</div>
@@ -155,7 +163,7 @@ desmarcarComoAdoptado(){
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
 						<button id="botonAdoptar"  className="btn btn-default" onClick={this.desmarcarComoAdoptado.bind(this)}>Mark as unadopted</button>
-						<button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button>
+						{/* <button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button> */}
 						</div>
 					</div>
 				</div>
