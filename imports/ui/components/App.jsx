@@ -23,6 +23,8 @@ export class App extends Component {
 		super(props);
 		this.state={busqueda:false,
 								post:[]}
+
+								
 	}
 	setBusquedaFalse(){
 		this.setState({busqueda: false});
@@ -41,6 +43,8 @@ export class App extends Component {
   	});
 
  	}
+
+
 	componentDidMount(){
 		// var slideIndex = 0;
 		// carousel();

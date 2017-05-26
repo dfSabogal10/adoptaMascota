@@ -25,5 +25,9 @@ templating
 accounts-password
 twbs:bootstrap
 accounts-ui
-ostrio:files
 thereactivestack:blazetoreact
+practicalmeteor:mocha
+xolvio:cleaner
+accounts-facebook
+service-configuration
+facebook-config-ui
