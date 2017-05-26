@@ -145,8 +145,6 @@ export class App extends Component {
     			<ul className="nav navbar-nav navbar-right">
       		<li><Link to="/myposts">My posts</Link></li>
       		<li><Link className="botonPost"to="/form"><button className="btn btn-primary">Post</button></Link></li>
-					<li><Link to="/prueba">Prueba</Link></li>
-
 					<li><AccountsUIWrapper/></li>
 				</ul>
   			</div>
