@@ -84,7 +84,7 @@ export default class Formulario extends Component {
  handleSubmit (e, message) {
   e.preventDefault();
   let formData = {
-   nom: this.refs.name.value,
+   nombre: this.refs.name.value,
    description: this.refs.description.value,
    tipoMascota: this.refs.tipoMascota.value,
    edadMascota: this.refs.edadMascota.value,
@@ -101,7 +101,7 @@ export default class Formulario extends Component {
   }
 	console.log(formData);
 
-	if (formData.name.length < 1 || formData.emailContacto.length < 1 || formData.tipoMascota.length < 1 ) {
+	if (formData.nombre.length < 1 || formData.emailContacto.length < 1 || formData.tipoMascota.length < 1 ) {
    return false;
   }
 	var user = Meteor.call("Mascota.addNewAdopt",formData);
