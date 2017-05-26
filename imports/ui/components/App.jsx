@@ -24,7 +24,7 @@ export class App extends Component {
 		this.state={busqueda:false,
 								post:[]}
 
-								
+
 	}
 	setBusquedaFalse(){
 		this.setState({busqueda: false});
@@ -183,6 +183,6 @@ export default AppContainer = createContainer(()=>{
 	Meteor.subscribe("mascota");
 
 	return {
-		posts: Mascota.find({}).fetch(),
+		posts: Mascota.find({}, {sort: { "nuevaMascota.fecha": -1 } ,skip:0,limit:10}).fetch(),
 	};
 }, App);

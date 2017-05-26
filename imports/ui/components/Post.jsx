@@ -18,9 +18,9 @@ export default class Post extends Component {
 
 	render() {
 		return (
-			<div className="row">
+			<div className="row post">
 				<div className="col-xs-3">
-					<img id={this.props.post._id}src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<Link to={"post/"+this.props.post._id}><img id={this.props.post._id}src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/></Link>
 				</div>
 				<div className="col-xs-9">
 					<div className="row">

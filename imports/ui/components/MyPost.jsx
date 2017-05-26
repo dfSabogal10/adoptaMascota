@@ -15,9 +15,7 @@ constructor(props){
 
 }
 
-eliminarPost(){
 
-}
 
 componentWillMount(){
 	this.state={adoptado:this.props.post.nuevaMascota.adoptado};
@@ -49,6 +47,19 @@ desmarcarComoAdoptado(){
 	}
 	});
 }
+eliminarPost(){
+	var r = confirm("Are you sure you want to delete your post?");
+if (r == true) {
+
+	Meteor.call('Mascota.deletePost',this.props.post._id, (err, res) =>{
+	if (err) { console.log(err); }
+	else {
+		console.log("efectivamente lo borra")
+	}
+	});
+}
+}
+
 
 	render() {
 		console.log("adoptadostate",this.state.adoptado);
@@ -57,10 +68,10 @@ desmarcarComoAdoptado(){
 		{
 
 		return (
-			<div className="row">
+			<div className="row post">
 
 				<div className="col-xs-3">
-					<img id={this.props.post._id} src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
+					<Link to={"seeMyPost/"+this.props.post._id}><img id={this.props.post._id} src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/></Link>
 				</div>
 				<div className="col-xs-9">
 					<div className="row">
@@ -105,7 +116,7 @@ desmarcarComoAdoptado(){
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
 						<button id="botonAdoptar"  className="btn btn-primary" onClick={this.marcarComoAdoptado.bind(this)}>Mark as adopted</button>
-						{/* <button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button> */}
+						<a href="/"><button className="btn btn-danger" onClick={this.eliminarPost.bind(this)}>Remove post</button></a>
 						</div>
 					</div>
 				</div>
@@ -115,7 +126,7 @@ desmarcarComoAdoptado(){
 	}
 	else{
 		return (
-			<div className="row">
+			<div className="row post">
 
 				<div className="col-xs-3">
 					<img src="https://img.clipartfest.com/016bc28f9f1eb00c7ba3a337926f4bdc_dog-head-profile-dog-clipart-profile_2400-2294.png"/>
@@ -163,7 +174,7 @@ desmarcarComoAdoptado(){
 						<div className="col-xs-1"></div>
 						<div className="col-xs-11 botonesmypost">
 						<button id="botonAdoptar"  className="btn btn-default" onClick={this.desmarcarComoAdoptado.bind(this)}>Mark as unadopted</button>
-						{/* <button className="btn btn-danger" onClick={this.eliminarPost}>Remove post</button> */}
+						<a href="/"><button className="btn btn-danger" onClick={this.eliminarPost.bind(this)}>Remove post</button></a>
 						</div>
 					</div>
 				</div>

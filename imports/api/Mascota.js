@@ -80,7 +80,7 @@ Mascota.remove({ "_id":id});
     throw new Meteor.Error("not-authorized");
   }
   var mascota = Mascota.find({}, {sort: { "nuevaMascota.fecha": -1 } ,skip:salto,limit:limit}).fetch();
-
+  console.log(mascota);
   return mascota;
 },
 "Mascota.viewallnotAdopted"(salto,limit){

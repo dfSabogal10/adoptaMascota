@@ -86,7 +86,9 @@ h2{
 .botonesmypost {
   text-align: right;
 }
-
+.post:hover{
+  background-color: #DCDCDC;
+}
 img{
   max-width:100%;
 }
