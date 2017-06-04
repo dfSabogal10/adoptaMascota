@@ -12,4 +12,7 @@ Then, the project is created in meteor, for deploying run the following commands
 meteor npm install
 meteor npm start
 
-For default it is using the mongoDB present in meteor
+For default it is using the mongoDB present in meteor.
+
+For the usability test, it is available in the following link:
+https://www.dropbox.com/s/dq3z5qmei9rjpjx/Pruebas%20de%20Usabilidad.docx?dl=0
